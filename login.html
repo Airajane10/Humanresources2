@@ -33,8 +33,15 @@
                 return false;
             } else {
                 alert("Registration successful! (Simulated). Redirecting to login.");
-                window.location.href = 'login1.html';
-                return true;
+             
+                if (email === 'test@example.com') {
+                    window.location.href = 'login1.html';
+                    return true;
+                } else {
+                    alert("Registration successful, but the login page is only set up for test@example.com.");
+                    window.location.href = 'login1.html';
+                    return true;
+                }
             }
 
             console.log("Simulated Registration Data:");

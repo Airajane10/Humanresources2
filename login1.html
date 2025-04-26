@@ -24,7 +24,7 @@
 
         <div id="verificationContainer" class="verification-container">
             <h2>Verify Your Email</h2>
-            <p>A verification code has been sent to your email address.</p>
+            <p>A verification code has been sent to your email address (simulated).</p>
             <label for="verificationCode">Verification Code:</label><br>
             <input type="text" id="verificationCode" name="verificationCode" required><br><br>
             <button id="verifyButton" type="button">Verify Code</button>
@@ -32,33 +32,63 @@
     </div>
 
     <script>
-        document.querySelector('#loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const email = document.querySelector('input[name="email"]').value;
-            const password = document.querySelector('input[name="password"]').value;
-
-            console.log("Email:", email);
-            console.log("Password:", password);
-
-            if (email === 'test@example.com' && password === 'password123') {
-                // Simulate sending verification code
-                console.log("Simulating sending verification code to:", email);
-                document.getElementById('loginForm').style.display = 'none';
-                document.getElementById('verificationContainer').style.display = 'block';
-            } else {
-                alert('Invalid email or password (simulated).');
-            }
-        });
-
-        document.querySelector('#verifyButton').addEventListener('click', function() {
-            const verificationCode = document.querySelector('input[name="verificationCode"]').value;
+        document.addEventListener('DOMContentLoaded', function() {
           
-            if (verificationCode === '123456') {
-                sessionStorage.setItem('username', 'Test User');
-                window.location.href = 'index.html'; 
-            } else {
-                alert('Invalid verification code.');
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('registered') === 'true') {
+                const registeredEmail = sessionStorage.getItem('registeredEmail');
+                const registeredPassword = sessionStorage.getItem('registeredPassword');
+
+                if (registeredEmail && registeredPassword) {
+                    document.querySelector('input[name="email"]').value = registeredEmail;
+                    document.querySelector('input[name="password"]').value = registeredPassword;
+
+                   
+                }
+
+      
+                sessionStorage.removeItem('registeredEmail');
+                sessionStorage.removeItem('registeredPassword');
             }
+
+            document.querySelector('#loginForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const email = document.querySelector('input[name="email"]').value;
+                const password = document.querySelector('input[name="password"]').value;
+
+                console.log("Email:", email);
+                console.log("Password:", password);
+
+            
+                const storedEmail = sessionStorage.getItem('registeredEmail');
+                const storedPassword = sessionStorage.getItem('registeredPassword');
+
+                if (email === storedEmail && password === storedPassword && storedEmail !== null) {
+             
+                    console.log("Simulating sending verification code to:", email);
+                    document.getElementById('loginForm').style.display = 'none';
+                    document.getElementById('verificationContainer').style.display = 'block';
+                } else if (email === 'test@example.com' && password === 'password123') {
+               
+                    console.log("Simulating sending verification code to:", email);
+                    document.getElementById('loginForm').style.display = 'none';
+                    document.getElementById('verificationContainer').style.display = 'block';
+                }
+                 else {
+                    alert('Invalid email or password (simulated).');
+                }
+            });
+
+            document.querySelector('#verifyButton').addEventListener('click', function() {
+                const verificationCode = document.querySelector('input[name="verificationCode"]').value;
+
+                if (verificationCode === '123456') {
+                    sessionStorage.setItem('username', 'Test User');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Invalid verification code.');
+                }
+            });
         });
     </script>
 </body>

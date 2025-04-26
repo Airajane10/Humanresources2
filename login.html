@@ -7,7 +7,7 @@
 <body>
     <div class="container">
         <h1 style="text-align:center; font-family: Georgia;">REGISTER FOR WORKBREAKDOWN STRUCTURE</h1>
-        <form method="POST" style="text-align:center;" onsubmit="return simulateRegister(this);">
+        <form method="POST" style="text-align:center;" onsubmit="event.preventDefault(); return simulateRegister(this);">
             <label for="username">Username:</label><br>
             <input type="text" id="username" name="username" required><br><br>
             <label for="birthday">Date of Birth:</label><br>

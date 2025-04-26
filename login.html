@@ -30,14 +30,15 @@
 
             if (!username || !birthday || !email || !password) {
                 alert("All fields are required (simulated).");
-                return false; // Prevent form submission
+                return false;
             } else {
                 alert("Registration successful! (Simulated). Please login.");
                 window.location.href = 'login1.html'; 
-                return true; 
+                
+                return true;
             }
 
-            
+           
             console.log("Simulated Registration Data:");
             console.log("Username:", username);
             console.log("Birthday:", birthday);

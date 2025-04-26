@@ -1,0 +1,201 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Use flexbox for the main layout */
+    min-height: 100vh; /* Ensure full viewport height */
+}
+
+.sidebar {
+    width: 250px; /* Adjust as needed */
+    background-color: #2c3e50; /* Darker sidebar background */
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Add a shadow for emphasis */
+    height: 100%; /* Make sidebar full height */
+    overflow-y: auto; /* In case the content is too long */
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-top {
+    margin-bottom: 20px;
+    text-align: center; /* Center the admin image and name */
+}
+
+.admin-image {
+    width: 100px; /* Adjust size as needed */
+    height: 100px;
+    border-radius: 50%; /* Make it a circle */
+    object-fit: cover; /* Ensure image fills the circle nicely */
+    margin-bottom: 10px;
+    border: 2px solid #fff; /* Optional: Add a border */
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    width: 100%;
+}
+
+.sidebar-menu li {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #34495e; /* Add a separator line */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.sidebar-menu li:hover {
+    background-color: #3498db; /* Lighter background on hover */
+}
+
+.sidebar-menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: block; /* Make the whole li clickable */
+}
+
+.sidebar-menu li.has-submenu > a {
+    display: flex; /* Use flexbox to align the text and arrow */
+    justify-content: space-between; /* Space them out */
+    align-items: center; /* Vertically center items */
+}
+
+.sidebar-menu li.has-submenu > a::after {
+    content: "▼"; /* Down arrow character */
+    font-size: 0.8em; /* Adjust size if needed */
+}
+
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin-left: 20px; /* Indent the submenu items */
+    display: none; /* Initially hide the submenu */
+    background-color: #2c3e50;
+}
+
+.submenu li {
+    padding: 10px 12px;
+    border-bottom: 1px solid #34495e;
+}
+
+.submenu li:last-child{
+    border-bottom: none;
+}
+
+.submenu li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+.submenu li a:hover {
+    color: #fff;
+}
+
+.main-content {
+    flex: 1; /* Take up the remaining space */
+    padding: 20px;
+    background-color: #fff; /* White background for main content */
+    overflow-y: auto;  /* add scroll bar if content overflows */
+}
+
+h1 {
+    color: #2c3e50; /* Dark heading color */
+    margin-bottom: 20px;
+    align-items: center; /* Center items horizontally */
+    text-align: center;
+}
+
+#loaded-content {
+    padding: 15px;
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Very light background */
+    height: 100%;
+}
+
+
+ul li a:hover {
+  background-color: #0056b3;
+}
+
+ul li a:active {
+  background-color: #004080;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul li {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+    background-color: #60a8ec; 
+    color: #020202;
+    text-size-adjust: 30px;
+    border-radius: 8px; 
+    margin-bottom: 10px;
+    border: 1px solid #000000; 
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    align-items: center;
+}
+.trainer-selection-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    text-align: center;
+}
+.trainer-selection-button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; 
+    display: inline-block; 
+}
+.trainer-selection-button:hover {
+    background-color: #0056b3;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .selection-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .selection-group button {
+    padding: 24px 34px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  
+  .selection-group button:hover {
+    background-color: #0056b3;
+  }

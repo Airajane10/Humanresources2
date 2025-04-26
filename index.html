@@ -6,22 +6,22 @@
     <title>WorkBreak Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
     <style>
-   
+
     body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        display: flex; 
-        min-height: 100vh; 
+        display: flex;
+        min-height: 100vh;
     }
 
     .sidebar {
         width: 250px;
-        background-color: #2c3e50; 
+        background-color: #2c3e50;
         color: #fff;
         padding: 20px 0;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-        height: 100%; 
+        height: 100%;
         overflow-y: auto;
         display: flex;
         flex-direction: column;
@@ -29,16 +29,16 @@
 
     .sidebar-top {
         margin-bottom: 20px;
-        text-align: center; 
+        text-align: center;
     }
 
     .admin-image {
         width: 100px;
         height: 100px;
-        border-radius: 50%; 
-        object-fit: cover; 
+        border-radius: 50%;
+        object-fit: cover;
         margin-bottom: 10px;
-        border: 2px solid #fff; 
+        border: 2px solid #fff;
     }
 
     .sidebar-menu {
@@ -52,13 +52,13 @@
     .sidebar-menu li {
         padding: 12px;
         text-align: left;
-        border-bottom: 1px solid #34495e; 
+        border-bottom: 1px solid #34495e;
         cursor: pointer;
-        transition: background-color 0.3s ease; 
+        transition: background-color 0.3s ease;
     }
 
     .sidebar-menu li:hover {
-        background-color: #3498db; 
+        background-color: #3498db;
     }
 
     .sidebar-menu li a {
@@ -69,20 +69,20 @@
 
     .sidebar-menu li.has-submenu > a {
         display: flex;
-        justify-content: space-between; 
-        align-items: center; 
+        justify-content: space-between;
+        align-items: center;
     }
 
     .sidebar-menu li.has-submenu > a::after {
-        content: "▼"; 
-        font-size: 0.8em; 
+        content: "▼";
+        font-size: 0.8em;
     }
 
     .submenu {
         list-style: none;
         padding: 0;
-        margin-left: 20px; 
-        display: none; 
+        margin-left: 20px;
+        display: none;
         background-color: #2c3e50;
     }
 
@@ -119,9 +119,9 @@
 
     #loaded-content {
         padding: 15px;
-        border: 1px solid #ddd; 
-        border-radius: 8px; 
-        background-color: #f9f9f9; 
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
         height: 100%;
     }
     </style>
@@ -138,11 +138,11 @@
                 <ul class="submenu" id="dashboard-submenu">
                     <li><a href="?module=training">Training Management</a>
                     <ul class="submenu" id="training-submenu">
-                    <li><a href="?module=planning.html">Planning</a></li>
-                    <li><a href="?module=monitoring.html">Monitoring</a></li>
-                    <li><a href="?module=execution.html">Execution</a></li>
-                     <li><a href="?module=trainer_selection.html">Trainer Selection</a></li>
-                </ul>
+                        <li><a href="?module=planning.html">Planning</a></li>
+                        <li><a href="?module=monitoring.html">Monitoring</a></li>
+                        <li><a href="?module=execution.html">Execution</a></li>
+                        <li><a href="?module=trainer_selection.html">Trainer Selection</a></li>
+                    </ul>
                     </li>
                     <li><a href="?module=learning">Learning Management</a>
                         <ul class="submenu" id="learning-submenu">
@@ -189,26 +189,26 @@
                 } else {
                     echo " </p>";
                 }
-              } else 
+              } else
               ?>
               <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
                   <?php
-             echo "<img src='image.jpg' style='margin: 0 10px; border-radius: 8px; max-width: 150px; height: auto;'>";
-               echo "<p style='font-family: \"Georgia\", Georgia; color: #000000; text-align: center; font-size: 3.2em; margin-bottom: 20px;'>WELCOME TO HUMAN RESOURCES 2 </p>";
-               echo "<p style='font-family: \"Arial\", Arial; color:rgb(0, 0, 0); text-align: center; font-size: 1.5em; margin-bottom: 20px;'>This system provides a structured approach to managing key human resources functions. As illustrated in this Work Breakdown Structure, HR2 offers tools for Training Management, Learning Management, Employee Self-Service, Competency Management, and Succession Planning, designed to streamline your HR processes and support your organization's success.</p>";
-               ?>
+              echo "<img src='image.jpg' style='margin: 0 10px; border-radius: 8px; max-width: 150px; height: auto;'>";
+                echo "<p style='font-family: \"Georgia\", Georgia; color: #000000; text-align: center; font-size: 3.2em; margin-bottom: 20px;'>WELCOME TO HUMAN RESOURCES 2 </p>";
+                echo "<p style='font-family: \"Arial\", Arial; color:rgb(0, 0, 0); text-align: center; font-size: 1.5em; margin-bottom: 20px;'>This system provides a structured approach to managing key human resources functions. As illustrated in this Work Breakdown Structure, HR2 offers tools for Training Management, Learning Management, Employee Self-Service, Competency Management, and Succession Planning, designed to streamline your HR processes and support your organization's success.</p>";
+                ?>
         </div>
     </div>
     <script>
-    
+
     const dashboardListItem = document.querySelector('.sidebar-menu li.has-submenu');
     const dashboardSubmenu = document.getElementById('dashboard-submenu');
     const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
     const loadedContent = document.getElementById('loaded-content');
 
-    
+
     dashboardListItem.addEventListener('click', function() {
-        
+
         if (dashboardSubmenu.style.display === 'none' || dashboardSubmenu.style.display === '') {
             dashboardSubmenu.style.display = 'block';
         } else {
@@ -216,7 +216,7 @@
         }
     });
 
-    
+
     const dashboardLink = dashboardListItem.querySelector('a');
     dashboardLink.addEventListener('click', function(event){
         event.preventDefault();
@@ -224,11 +224,11 @@
 
     sidebarLinks.forEach(link => {
         link.addEventListener('click', function(event) {
-            event.preventDefault(); 
-            const module = this.getAttribute('href').split('=')[1]; 
-             console.log(module);
+            event.preventDefault();
+            const module = this.getAttribute('href').split('=')[1];
+            console.log(module);
             if (module) {
-                fetch(`modules/${module}.php`)  
+                fetch(`modules/${module}.php`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Failed to load module content.');
@@ -236,7 +236,7 @@
                         return response.text();
                     })
                     .then(data => {
-                        loadedContent.innerHTML = data; 
+                        loadedContent.innerHTML = data;
                     })
                     .catch(error => {
                         loadedContent.innerHTML = `<p>Error: ${error.message}</p>`;

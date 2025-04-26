@@ -1,8 +1,8 @@
 <?php
-// admin.php
+// admin.html
 session_start();
 if (!isset($_SESSION['admin'])) {
-  header('Location: index.php');
+  header('Location: index.html');
   exit();
 }
 echo "<h1 style='text-align:center;'>Admin Dashboard</h1>";

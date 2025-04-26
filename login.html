@@ -32,20 +32,17 @@
                 alert("All fields are required (simulated).");
                 return false;
             } else {
-                alert("Registration successful! (Simulated). Please login.");
-                window.location.href = 'login1.html'; 
-                
+                alert("Registration successful! (Simulated). Redirecting to login.");
+                window.location.href = 'login1.html';
                 return true;
             }
 
-           
             console.log("Simulated Registration Data:");
             console.log("Username:", username);
             console.log("Birthday:", birthday);
             console.log("Email:", email);
             console.log("Password:", password);
 
-            
             return false;
         }
     </script>

@@ -1,33 +1,3 @@
-<?php
-// register.html
-session_start();
-include('Connections.html'); // Assuming this file handles your database connection
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['register'])) { // Check if it's the registration form
-        $username = $_POST['username'];
-        $birthday = $_POST['birthday'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        // Basic validation (you should add more robust validation)
-        if (empty($username) || empty($birthday) || empty($email) || empty($password)) {
-            echo "All fields are required.";
-        } else {
-            // Use prepared statements to prevent SQL injection
-            $stmt = $conn->prepare("INSERT INTO users (username, birthday, email, password) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssss", $username, $birthday, $email, $password);
-            if ($stmt->execute()) {
-                echo "<script>alert('Registration successful! Please login.'); window.location.href = 'login1.html';</script>"; // Redirect to login
-            } else {
-                echo "Error: " . $stmt->error;
-            }
-            $stmt->close();
-        }
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,19 +7,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="container">
         <h1 style="text-align:center; font-family: Georgia;">REGISTER FOR WORKBREAKDOWN STRUCTURE</h1>
-        <form method="POST" style="text-align:center;">
-            <input type="hidden" name="register" value="true">
-            <label>Username:</label><br>
-            <input type="text" name="username" required><br>
-            <label>Date of Birth:</label><br>
-            <input type="date" name="birthday" required><br>
-            <label>Email:</label><br>
-            <input type="email" name="email" required><br>
-            <label>Password:</label><br>
-            <input type="password" name="password" required><br>
+        <form method="POST" style="text-align:center;" onsubmit="return simulateRegister(this);">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="birthday">Date of Birth:</label><br>
+            <input type="date" id="birthday" name="birthday" required><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
             <button type="submit">Register</button>
         </form>
-        <p style="text-align:center;color:rgb(250, 250, 250);">Already have an account? <a href="login1.php">Login here</p> 
+        <p style="text-align:center;color:black;">Already have an account? <a href="login1.html">Login here</a></p>
     </div>
+
+    <script>
+        function simulateRegister(form) {
+            const username = form.username.value;
+            const birthday = form.birthday.value;
+            const email = form.email.value;
+            const password = form.password.value;
+
+            if (!username || !birthday || !email || !password) {
+                alert("All fields are required (simulated).");
+                return false; // Prevent form submission
+            } else {
+                alert("Registration successful! (Simulated). Please login.");
+                window.location.href = 'login1.html'; 
+                return true; 
+            }
+
+            
+            console.log("Simulated Registration Data:");
+            console.log("Username:", username);
+            console.log("Birthday:", birthday);
+            console.log("Email:", email);
+            console.log("Password:", password);
+
+            
+            return false;
+        }
+    </script>
 </body>
 </html>

@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt = $conn->prepare("INSERT INTO users (username, birthday, email, password) VALUES (?, ?, ?, ?)");
             $stmt->bind_param("ssss", $username, $birthday, $email, $password);
             if ($stmt->execute()) {
-                echo "<script>alert('Registration successful! Please login.'); window.location.href = 'login1.php';</script>"; // Redirect to login
+                echo "<script>alert('Registration successful! Please login.'); window.location.href = 'login1.html';</script>"; // Redirect to login
             } else {
                 echo "Error: " . $stmt->error;
             }

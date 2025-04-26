@@ -3,37 +3,61 @@
 <head>
     <title>Login - WorkBreak</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .verification-container {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1 style="text-align:center; font-family: Georgia;">WELCOME TO WORKBREAK STRUCTURE</h1>
-        <form method="POST" style="text-align:center;">
+        <form id="loginForm" method="POST" style="text-align:center;">
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email" required><br><br>
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password" required><br><br>
             <button type="submit">Login</button>
         </form>
+
+        <div id="verificationContainer" class="verification-container">
+            <h2>Verify Your Email</h2>
+            <p>A verification code has been sent to your email address.</p>
+            <label for="verificationCode">Verification Code:</label><br>
+            <input type="text" id="verificationCode" name="verificationCode" required><br><br>
+            <button id="verifyButton" type="button">Verify Code</button>
+        </div>
     </div>
 
     <script>
-        
-        document.querySelector('form').addEventListener('submit', function(event) {
+        document.querySelector('#loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const email = document.querySelector('input[name="email"]').value;
             const password = document.querySelector('input[name="password"]').value;
 
-        
-
             console.log("Email:", email);
             console.log("Password:", password);
 
-        
             if (email === 'test@example.com' && password === 'password123') {
-                sessionStorage.setItem('username', 'Test User'); 
-                window.location.href = 'index.html'; // Redirect to a hypothetical index.html
+                // Simulate sending verification code
+                console.log("Simulating sending verification code to:", email);
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('verificationContainer').style.display = 'block';
             } else {
                 alert('Invalid email or password (simulated).');
+            }
+        });
+
+        document.querySelector('#verifyButton').addEventListener('click', function() {
+            const verificationCode = document.querySelector('input[name="verificationCode"]').value;
+          
+            if (verificationCode === '123456') {
+                sessionStorage.setItem('username', 'Test User');
+                window.location.href = 'index.html'; 
+            } else {
+                alert('Invalid verification code.');
             }
         });
     </script>

@@ -4,10 +4,14 @@
     <title>Login - WorkBreak</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .verification-container {
-            display: none;
+        .captcha-container {
             margin-top: 20px;
             text-align: center;
+        }
+
+        .captcha-container label {
+            display: block;
+            margin-bottom: 5px;
         }
     </style>
 </head>
@@ -19,21 +23,18 @@
             <input type="email" id="email" name="email" required><br><br>
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password" required><br><br>
+
+            <div class="captcha-container">
+                <label for="captcha">Are you a human?</label>
+                <input type="checkbox" id="captcha" name="captcha">
+            </div>
+            <br>
             <button type="submit">Login</button>
         </form>
-
-        <div id="verificationContainer" class="verification-container">
-            <h2>Verify Your Email</h2>
-            <p>A verification code has been sent to your email address (simulated).</p>
-            <label for="verificationCode">Verification Code:</label><br>
-            <input type="text" id="verificationCode" name="verificationCode" required><br><br>
-            <button id="verifyButton" type="button">Verify Code</button>
-        </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-          
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('registered') === 'true') {
                 const registeredEmail = sessionStorage.getItem('registeredEmail');
@@ -42,11 +43,8 @@
                 if (registeredEmail && registeredPassword) {
                     document.querySelector('input[name="email"]').value = registeredEmail;
                     document.querySelector('input[name="password"]').value = registeredPassword;
-
-                   
                 }
 
-      
                 sessionStorage.removeItem('registeredEmail');
                 sessionStorage.removeItem('registeredPassword');
             }
@@ -55,38 +53,27 @@
                 event.preventDefault();
                 const email = document.querySelector('input[name="email"]').value;
                 const password = document.querySelector('input[name="password"]').value;
+                const isHuman = document.querySelector('#captcha').checked;
 
                 console.log("Email:", email);
                 console.log("Password:", password);
+                console.log("Human Check:", isHuman);
 
-            
                 const storedEmail = sessionStorage.getItem('registeredEmail');
                 const storedPassword = sessionStorage.getItem('registeredPassword');
 
-                if (email === storedEmail && password === storedPassword && storedEmail !== null) {
-             
-                    console.log("Simulating sending verification code to:", email);
-                    document.getElementById('loginForm').style.display = 'none';
-                    document.getElementById('verificationContainer').style.display = 'block';
-                } else if (email === 'test@example.com' && password === 'password123') {
-               
-                    console.log("Simulating sending verification code to:", email);
-                    document.getElementById('loginForm').style.display = 'none';
-                    document.getElementById('verificationContainer').style.display = 'block';
-                }
-                 else {
-                    alert('Invalid email or password (simulated).');
-                }
-            });
-
-            document.querySelector('#verifyButton').addEventListener('click', function() {
-                const verificationCode = document.querySelector('input[name="verificationCode"]').value;
-
-                if (verificationCode === '123456') {
-                    sessionStorage.setItem('username', 'Test User');
-                    window.location.href = 'index.html';
+                if (isHuman) {
+                    if (email === storedEmail && password === storedPassword && storedEmail !== null) {
+                        sessionStorage.setItem('username', 'Registered User');
+                        window.location.href = 'index.html';
+                    } else if (email === 'test@example.com' && password === 'password123') {
+                        sessionStorage.setItem('username', 'Test User');
+                        window.location.href = 'index.html';
+                    } else {
+                        alert('Invalid email or password (simulated).');
+                    }
                 } else {
-                    alert('Invalid verification code.');
+                    alert('Please confirm you are not a robot.');
                 }
             });
         });

@@ -32,16 +32,14 @@
                 alert("All fields are required (simulated).");
                 return false;
             } else {
-                alert("Registration successful! (Simulated). Redirecting to login.");
-             
-                if (email === 'test@example.com') {
-                    window.location.href = 'login1.html';
-                    return true;
-                } else {
-                    alert("Registration successful, but the login page is only set up for test@example.com.");
-                    window.location.href = 'login1.html';
-                    return true;
-                }
+                alert("Registration successful! (Simulated). Redirecting to user information page.");
+
+                // Store registered email and password in localStorage
+                localStorage.setItem('registeredEmail', email);
+                localStorage.setItem('registeredPassword', password);
+
+                window.location.href = 'user.html';
+                return true;
             }
 
             console.log("Simulated Registration Data:");

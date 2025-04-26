@@ -17,26 +17,20 @@
     </div>
 
     <script>
-        // This is where JavaScript would handle the login logic
-        // since HTML itself cannot process form submissions for authentication.
-
-        // Example of how you might handle the form submission with JavaScript:
+        
         document.querySelector('form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-
+            event.preventDefault();
             const email = document.querySelector('input[name="email"]').value;
             const password = document.querySelector('input[name="password"]').value;
 
-            // In a real application, you would send this data to a server-side script
-            // (like the PHP you had before) using AJAX (fetch or XMLHttpRequest)
-            // to authenticate the user.
+        
 
             console.log("Email:", email);
             console.log("Password:", password);
 
-            // For this HTML-only version, we can only simulate a login:
+        
             if (email === 'test@example.com' && password === 'password123') {
-                sessionStorage.setItem('username', 'Test User'); // Simulate setting a username
+                sessionStorage.setItem('username', 'Test User'); 
                 window.location.href = 'index.html'; // Redirect to a hypothetical index.html
             } else {
                 alert('Invalid email or password (simulated).');

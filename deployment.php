@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deployment & Go-Live | ESS Monitoring</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background-color:rgb(0, 0, 0);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #003366;
+    }
+
+    .dashboard {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 250px;
+      background: #e6f0ff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #004080;
+    }
+
+    textarea, input[type="text"], input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      background-color: #004080;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #002f5c;
+    }
+
+    .announcement {
+      background-color: #d1f0d1;
+      padding: 15px;
+      border-left: 5px solid green;
+      margin-top: 20px;
+      border-radius: 6px;
+    }
+
+    .logs {
+      background-color: #f9f9f9;
+      border: 1px dashed #ccc;
+      padding: 10px;
+      font-family: monospace;
+      height: 150px;
+      overflow-y: scroll;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Deployment & Go-Live Dashboard</h1>
+    <p style="text-align:center;">Monitoring ESS system performance and ensuring a smooth launch experience for all employees.</p>
+
+    <div class="announcement">
+      <strong>📢 Go-Live Announcement:</strong> The Employee Self-Service (ESS) portal is now officially live! All employees can now access the platform using their company credentials.
+    </div>
+
+    <div class="dashboard">
+      <div class="card">
+        <h3>📊 System Performance</h3>
+        <p><strong>Uptime:</strong> 99.98%</p>
+        <p><strong>Avg. Response Time:</strong> 320ms</p>
+        <p><strong>Active Sessions:</strong> 135</p>
+      </div>
+
+      <div class="card">
+        <h3>🔐 User Access</h3>
+        <p><strong>Employees Logged In Today:</strong> 240</p>
+        <p><strong>Failed Login Attempts:</strong> 5</p>
+        <p><strong>New Users Registered:</strong> 12</p>
+      </div>
+
+      <div class="card">
+        <h3>📄 System Logs</h3>
+        <div class="logs">
+          [04/24 09:23] User ID 123 logged in<br>
+          [04/24 09:25] User ID 126 reported 404 error<br>
+          [04/24 09:30] Bug fix deployed: Time-off request issue<br>
+          [04/24 09:45] User ID 130 updated profile<br>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 30px;">
+      <h3>🐞 Report an Issue or Bug</h3>
+      <form method="post" action="">
+        <label for="username">Your Name:</label>
+        <input type="text" name="username" id="username" required>
+
+        <label for="issue">Issue Description:</label>
+        <textarea name="issue" id="issue" rows="4" required placeholder="Describe the issue or bug..."></textarea>
+
+        <input type="submit" value="Submit Issue">
+      </form>
+    </div>
+  </div>
+</body>
+</html>

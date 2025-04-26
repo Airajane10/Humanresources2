@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learning Outcomes</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background-color: #eef6ff;
+      color: #003366;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #004080;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"], textarea, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+
+    input[type="file"] {
+      margin-bottom: 15px;
+    }
+
+    button {
+      display: block;
+      margin: auto;
+      background-color: #004080;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #002f5c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📚 Learning Outcomes</h1>
+
+    <form id="outcomesForm">
+      
+      <div class="section">
+        <h2>📝 10-Item Quiz</h2>
+
+        <label>1. What does HR stand for?</label>
+        <select required><option value="">--Select--</option><option>A. Human Respect</option><option>B. Hiring Resources</option><option>C. Human Resources</option><option>D. High Ranking</option></select>
+
+        <label>2. Which is a benefit of employee training?</label>
+        <select required><option value="">--Select--</option><option>A. Decreased productivity</option><option>B. Improved performance</option><option>C. Increased turnover</option><option>D. Reduced morale</option></select>
+
+        <label>3. What is a common type of training method?</label>
+        <select required><option value="">--Select--</option><option>A. Teleportation</option><option>B. Mentoring</option><option>C. Hypnosis</option><option>D. Avoidance</option></select>
+
+        <label>4. What does DE&I stand for?</label>
+        <select required><option value="">--Select--</option><option>A. Data, Ethics & Integrity</option><option>B. Diversity, Equity & Inclusion</option><option>C. Development, Education & Innovation</option><option>D. Digital Engagement & Implementation</option></select>
+
+        <label>5. A good onboarding program helps with:</label>
+        <select required><option value="">--Select--</option><option>A. Delaying productivity</option><option>B. Increasing new hire anxiety</option><option>C. Integrating new hires faster</option><option>D. Eliminating training</option></select>
+
+        <label>6. Training should align with:</label>
+        <select required><option value="">--Select--</option><option>A. Trainer's preference</option><option>B. Employee hobbies</option><option>C. Organizational goals</option><option>D. Competitor trends</option></select>
+
+        <label>7. What does LMS stand for?</label>
+        <select required><option value="">--Select--</option><option>A. Learning Management System</option><option>B. Language Media Studio</option><option>C. Local Market Survey</option><option>D. Logistics & Mobility Software</option></select>
+
+        <label>8. What is a soft skill?</label>
+        <select required><option value="">--Select--</option><option>A. Coding</option><option>B. Communication</option><option>C. Accounting</option><option>D. Machinery Operation</option></select>
+
+        <label>9. What’s the purpose of performance management training?</label>
+        <select required><option value="">--Select--</option><option>A. To confuse employees</option><option>B. To increase vacation time</option><option>C. To help improve job performance</option><option>D. To avoid evaluations</option></select>
+
+        <label>10. Which is used to assess learning outcomes?</label>
+        <select required><option value="">--Select--</option><option>A. Exam and Project</option><option>B. Watching TV</option><option>C. Coffee breaks</option><option>D. Daily attendance</option></select>
+      </div>
+
+      
+      <div class="section">
+        <h2>🧠 25-Item Exam</h2>
+        <?php
+        $questions = [
+          "How does accessible training contribute to empowering customers?" => ["a) By providing training at no cost", "b) By making training easy to access and understand", "c) By forcing customers to attend training", "d) By limiting the amount of training"],
+          "What are the key elements of effective training, according to the mission statement?" => ["a) Length, cost, and location", "b) Accessibility, effectiveness, and engagement", "c) Difficulty, complexity, and exclusivity", "d) Speed, efficiency, and brevity"],
+          "How does engaging training benefit both the customer and the company?" => ["a) It bores the customer and distracts the company.", "b) It increases customer participation and improves learning outcomes, and strengthens the company brand.", "c) It confuses the customer and lowers company profits.", "d) It is expensive and time-consuming"],
+          "What is the role of product knowledge in achieving customer goals?" => ["a) It is irrelevant to customer goals.", "b) It enables customers to use the product effectively and achieve their desired outcomes.", "c) It sets unrealistic expectations for customers.", "d) It makes the product more difficult to use."],
+          "How does increased customer satisfaction contribute to long-term loyalty?" => ["a) It has no impact on customer loyalty.", "b) It makes customers more likely to stay with the company and make repeat purchases.", "c) It encourages customers to switch to competitors.", "d) It decreases customer trust."],
+          "What does it mean for a company to be a \"recognized leader\" in customer education?" => ["a) The company has the most expensive training programs.", "b) The company is acknowledged for its innovative and effective training practices.", "c) The company offers the least amount of training.", "d) The company's training is mandatory"],
+          "How does the vision statement define a \"successful\" product user?" => ["a) Someone who uses the product occasionally", "b) Someone who is self-sufficient and achieves their goals with the product", "c) Someone who constantly needs support", "d) Someone who complains a lot"],
+          "What is the significance of creating a \"global community\" of product users?" => ["a) It isolates customers from each other.", "b) It fosters a sense of belonging, knowledge sharing, and mutual support among users worldwide.", "c) It increases the company's expenses", "d) It is not significant"],
+          "How does the vision statement imply that customer training can benefit the company's brand?" => ["a) It doesn't imply any benefit to the company's brand.", "b) By creating satisfied and successful users who become advocates for the company and its products.", "c) By making the company seem pushy.", "d) By making the company look bad"],
+          "What are the potential business benefits of having self-sufficient and successful product users?" => ["a) Increased support costs and decreased efficiency", "b) Reduced support costs, increased customer retention, and positive word-of-mouth", "c) Decreased customer satisfaction and increased churn", "d) No benefits"],
+          "What is the primary goal of HR training?" => ["a) To entertain employees", "b) To develop employees' skills, knowledge, and performance", "c) To reduce the number of employees", "d) To increase company expenses"],
+          "Which of the following is NOT a benefit of effective HR training?" => ["a) Increased employee productivity", "b) Reduced employee turnover", "c) Increased legal issues", "d) Improved employee morale"],
+          "What is a needs assessment in HR training?" => ["a) A process of evaluating employee performance", "b) A method for determining the cost of training", "c) A way to identify the training requirements of employees", "d) A type of employee survey"],
+          "Which training method involves learning by doing?" => ["a) Lectures", "b) Case studies", "c) On-the-job training", "d) Presentations"],
+          "What is the purpose of evaluating training effectiveness?" => ["a) To determine employee salaries", "b) To measure the success of the training program", "c) To assign employees to new departments", "d) To schedule employee vacations"],
+          "What is Kirkpatrick's model of training evaluation?" => ["a) A method for calculating training costs", "b) A four-level model for evaluating training effectiveness", "c) A system for managing employee records", "d) A technique for conducting job interviews"],
+          "Which of the following is a type of training delivery method?" => ["a) Employee discipline", "b) Performance appraisal", "c) Online courses", "d) Job description"],
+          "What is the ADDIE model?" => ["a) A framework for designing and developing training programs", "b) A method for resolving employee conflicts", "c) A system for tracking employee attendance", "d) A process for recruiting new employees"],
+          "What is the importance of aligning training with business objectives?" => ["a) It is not important", "b) It ensures that training contributes to the company's goals", "c) It increases training costs", "d) It complicates the training process"],
+          "What is cross-training?" => ["a) Training employees in different departments", "b) Training employees on how to use computers", "c) Training employees to handle customer service", "d) Training employees to work on weekends"],
+          "What is mentoring?" => ["a) A type of disciplinary action", "b) A process where an experienced employee guides a less experienced one", "c) A method of performance evaluation", "d) A way to schedule employee shifts"],
+          "What is coaching in the context of HR training?" => ["a) A formal disciplinary process", "b) A method for improving employee performance through guidance and feedback", "c) A system for payroll management", "d) A technique for recruiting senior executives"],
+          "What is the purpose of compliance training?" => ["a) To improve employee morale", "b) To ensure employees understand and adhere to laws and regulations", "c) To teach employees new software skills", "d) To promote employee social events"],
+          "Which of the following is a key component of a successful training program?" => ["a) Mandatory attendance", "b) Relevant content", "c) High cost", "d) Strict deadlines"],
+          "What is the role of HR in employee training?" => ["a) To have no role", "b) To oversee and manage employee training and development", "c) To only deliver training sessions", "d) To evaluate training cost"]
+        ];
+
+        $qNum = 1;
+        foreach ($questions as $question => $choices) {
+          echo "<label for='exam$qNum'>$question</label>";
+          echo "<select name='exam$qNum' id='exam$qNum' required>";
+          echo "<option value=''>-- Select Answer --</option>";
+          foreach ($choices as $choice) {
+            $val = substr($choice, 0, 1);
+            echo "<option value='$val'>$choice</option>";
+          }
+          echo "</select>";
+          $qNum++;
+        }
+        ?>
+      </div>
+
+      
+      <div class="section">
+        <h2>📤 Upload Project  File</h2>
+        <input type="file" name="Project_file" accept=".pdf,.doc,.docx" required>
+      </div>
+
+      
+      <div class="section">
+        <h2>📌 Project Description</h2>
+        <textarea name="project_description" rows="5" placeholder="Describe your project work here..." required></textarea>
+      </div>
+
+     
+      <div class="section">
+        <h2>💬 Instructor Feedback</h2>
+        <textarea name="instructor_feedback" rows="3" placeholder="Instructor feedback will appear here..." readonly>Thank you for submitting your learning outcomes. We'll review and get back to you shortly.</textarea>
+      </div>
+
+      <button type="submit">Submit Learning Outcomes</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("outcomesForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("✅ Your learning outcomes have been submitted!");
+      this.reset();
+    });
+  </script>
+</body>
+</html>

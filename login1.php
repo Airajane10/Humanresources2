@@ -1,0 +1,44 @@
+<?php
+// login.php
+session_start();
+include('Connections.php');
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  $stmt = $conn->prepare("SELECT id, username FROM users WHERE email = ? AND password = ?");
+  $stmt->bind_param("ss", $email, $password);
+  $stmt->execute();
+  $stmt->store_result();
+
+  if ($stmt->num_rows > 0) {
+    $stmt->bind_result($id, $username);
+    $stmt->fetch();
+    $_SESSION['user'] = $id;
+    echo "<script>sessionStorage.setItem('username', '$username'); window.location.href = 'index.php';</script>";
+  } else {
+    echo "Invalid email or password.";
+  }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - WorkBreak</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 style="text-align:center; font-family: Georgia;">WELCOME TO WORKBREAK STRUCTURE</h1>
+    <form method="POST" style="text-align:center;">
+      <label>Email:</label><br>
+      <input type="email" name="email" required><br>
+      <label>Password:</label><br>
+      <input type="password" name="password" required><br>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html>

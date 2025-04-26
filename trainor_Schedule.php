@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trainer Schedule</title>
+  <link href="training.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Georgia', Georgia;
+      background-color: #f0faff;
+      color: #002147;
+      margin: 0;
+      padding: 20px;
+    }
+
+  
+    #calendar {
+      max-width: 90%;
+      margin: 0 auto 40px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    #appointment-form {
+  width: 90%;
+  max-width: 600px;
+  margin: 60px auto 20px auto; /* Added margin-top: 60px */
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 6px rgba(0,0,0,0.05);
+  font-family: 'Georgia';
+}
+
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-family: 'Georgia';
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #88b7ff;
+      border-radius: 5px;
+      font-family: 'Georgia';
+    }
+
+    button {
+      margin-top: 15px;
+      background-color: navy;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color:rgb(110, 117, 136);
+    }
+
+h1 {
+  color: #007bff;
+  margin-bottom: 10px;
+  font-family: Georgia;
+}
+
+.legend {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 0.95em;
+}
+
+.legend span {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.fully-booked {
+  background-color: #ffdd57;
+  color: #000;
+}
+
+.partially-booked {
+  background-color: #ffc0cb;
+  color: #000;
+}
+
+.year-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.calendar {
+  width: 360px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+.calendar-header {
+  text-align: center;
+  background-color:rgb(56, 53, 63);
+  color: white;
+  padding: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color:rgb(62, 64, 66);
+  color: white;
+}
+
+.calendar-days div {
+  padding: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.calendar-dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-dates div {
+  padding: 20px 0;
+  text-align: center;
+  border: 1px solid #ddd;
+  height: 40px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.today {
+  background-color: #caffbf;
+  font-weight: bold;
+}
+
+.highlight-yellow {
+  background-color: #ffdd57;
+  font-weight: bold;
+}
+
+.highlight-pink {
+  background-color: #ffc0cb;
+  font-weight: bold;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<h1>📅 TRAINOR SCHEDULE</h1>
+<div class="legend">
+<span class="fully-booked">Fully Booked</span>
+<span class="partially-booked">Partially Booked</span>
+</div>
+<div class="year-container" id="calendarContainer"></div>
+
+<!-- Modal -->
+<div id="noteModal" class="modal">
+<div class="modal-content">
+  <span class="close" onclick="document.getElementById('noteModal').style.display='none'">&times;</span>
+  <h3>Add Note</h3>
+  <p id="modal-date"></p>
+  <textarea id="noteText" rows="4" style="width: 100%;"></textarea>
+  <button onclick="saveNote()">Save Note</button>
+</div>
+</div>
+
+<script>
+const year = 2025;
+const container = document.getElementById('calendarContainer');
+const modal = document.getElementById('noteModal');
+const noteDate = document.getElementById('modal-date');
+const noteText = document.getElementById('noteText');
+const notes = {};
+
+let selectedKey = '';
+
+const months = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+function getRandomHighlights(monthIndex) {
+  const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+  let highlights = {};
+  let count = Math.floor(Math.random() * 5) + 3;
+
+  while (Object.keys(highlights).length < count) {
+    const randomDay = Math.floor(Math.random() * daysInMonth) + 1;
+    highlights[randomDay] = Math.random() > 0.5 ? 'highlight-yellow' : 'highlight-pink';
+  }
+
+  return highlights;
+}
+
+function createCalendar(monthIndex) {
+  const calendar = document.createElement('div');
+  calendar.className = 'calendar';
+
+  const header = document.createElement('div');
+  header.className = 'calendar-header';
+  header.textContent = months[monthIndex] + ' ' + year;
+
+  const daysRow = document.createElement('div');
+  daysRow.className = 'calendar-days';
+  days.forEach(day => {
+    const dayDiv = document.createElement('div');
+    dayDiv.textContent = day;
+    daysRow.appendChild(dayDiv);
+  });
+
+  const dates = document.createElement('div');
+  dates.className = 'calendar-dates';
+
+  const firstDay = new Date(year, monthIndex, 1).getDay();
+  const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+  const highlights = getRandomHighlights(monthIndex);
+
+  for (let i = 0; i < firstDay; i++) {
+    dates.appendChild(document.createElement('div'));
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dateDiv = document.createElement('div');
+    const today = new Date();
+
+    if (
+      day === today.getDate() &&
+      monthIndex === today.getMonth() &&
+      year === today.getFullYear()
+    ) {
+      dateDiv.classList.add('today');
+    }
+
+    if (highlights[day]) {
+      dateDiv.classList.add(highlights[day]);
+    }
+
+    const key = `${year}-${monthIndex + 1}-${day}`;
+    dateDiv.dataset.dateKey = key;
+    dateDiv.onclick = () => {
+      selectedKey = key;
+      noteDate.innerText = `Note for ${months[monthIndex]} ${day}, ${year}`;
+      noteText.value = notes[key] || '';
+      modal.style.display = 'block';
+    };
+
+    dateDiv.textContent = day;
+    dates.appendChild(dateDiv);
+  }
+
+  calendar.appendChild(header);
+  calendar.appendChild(daysRow);
+  calendar.appendChild(dates);
+  container.appendChild(calendar);
+}
+
+function saveNote() {
+  if (selectedKey) {
+    notes[selectedKey] = noteText.value;
+    alert('Note saved for ' + selectedKey);
+    modal.style.display = 'none';
+  }
+}
+
+for (let i = 0; i < 12; i++) {
+  createCalendar(i);
+}
+</script>
+</body>
+</html>
+
+
+<div>
+<div>
+<div>
+<div id="appointment-form">
+<h1 style="font-family: Georgia;color:rgb(68, 67, 158);text-shadow: 1px 1pxrgb(255, 255, 255);">BOOK AN APPOINTMENT</h1>
+<form id="trainerEventForm" style="font-family: Georgia, serif;">
+    <label for="title">Training Topic</label>
+    <input type="text" name="title" id="title" placeholder="e.g., Leadership Skills" required>
+
+    <label for="start">Start Time</label>
+    <input type="datetime-local" name="start" id="start" required>
+
+    <label for="end">End Time</label>
+    <input type="datetime-local" name="end" id="end" required>
+
+    <button type="submit">📌 Schedule Training</button>
+  </form>
+
+<div id="success-message" style="display:none; color: green; margin-top: 10px; font-weight: bold;">
+    ✅ Appointment added successfully!
+  </div>
+</div>
+
+<script>
+  document.getElementById('trainerEventForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    setTimeout(() => {
+      document.getElementById('success-message').style.display = 'block';
+      document.getElementById('trainerEventForm').reset();
+      setTimeout(() => {
+        document.getElementById('success-message').style.display = 'none';
+      }, 3000);
+    }, 500); 
+  });
+</script>

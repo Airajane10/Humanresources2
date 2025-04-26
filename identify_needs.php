@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learning Needs Assessment</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 20px;
+      color: #003366;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: navy;
+    }
+
+    .objectives {
+      background: #e6f0ff;
+      padding: 15px;
+      border-left: 5px solid #3366cc;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    input[type="checkbox"], textarea {
+      margin-top: 5px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      resize: vertical;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 25px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00264d;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>📘 Learning Needs Assessment</h1>
+
+    <div class="objectives">
+      <h2>🎯 Company Learning Objective</h2>
+      <p>To develop a workforce that excels in leadership, technical skills, and diversity, while ensuring compliance and readiness for change.</p>
+    </div>
+
+    <form id="gapForm">
+      <div class="form-group">
+        <h3>✅ Current Skills (Check what you feel confident in):</h3>
+        <label><input type="checkbox" name="skills[]" value="Leadership"> Leadership</label>
+        <label><input type="checkbox" name="skills[]" value="Technical Skills"> Technical Skills</label>
+        <label><input type="checkbox" name="skills[]" value="Compliance Knowledge"> Compliance Knowledge</label>
+        <label><input type="checkbox" name="skills[]" value="Diversity & Inclusion"> Diversity & Inclusion</label>
+        <label><input type="checkbox" name="skills[]" value="Change Management"> Change Management</label>
+      </div>
+
+      <div class="form-group">
+        <h3>📌 Areas for Improvement:</h3>
+        <textarea name="improvements" rows="5" placeholder="Describe the areas you feel you need more training in..."></textarea>
+      </div>
+
+      <button type="submit">Submit Assessment</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("gapForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      alert("📩 Your learning needs assessment has been submitted!");
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>

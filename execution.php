@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Training Execution</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background-color:rgb(41, 43, 46);
+      padding: 20px;
+      color: #002244;
+    }
+
+    h1,h2 {
+      text-align: center;
+      color: navy;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    ul.training-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.training-list li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto 0;
+      background-color: navy;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #001f4d;
+    }
+
+  </style>
+</head>
+<body>
+
+<h1 style="font-family: Georgia;color:rgb(255, 255, 255);text-shadow: 1px 1pxrgb(255, 255, 255);">📚 Training Execution</h1>
+  <div class="container">
+
+    
+    <div class="section">
+      <h2>📋 List of Training Sessions</h2>
+      <ul class="training-list">
+        <li><strong>Leadership Skills Training</strong> - April 30, 2025</li>
+        <li><strong>Technical Skills Bootcamp</strong> - May 2, 2025</li>
+        <li><strong>DE&I Awareness Workshop</strong> - May 5, 2025</li>
+        <li><strong>Change Management Seminar</strong> - May 8, 2025</li>
+      </ul>
+    </div>
+
+    
+    <div class="section">
+      <h2>📝 Enroll Participants</h2>
+      <form id="enrollForm">
+        <label for="participantName">Participant Name:</label>
+        <input type="text" id="participantName" name="participantName" required>
+<label for="EmailAdress">Email Adress:</label>
+        <input type="text" id="EmailAdress" name="EmailAdress" required>
+        <label for="trainingSelect">Select Training Session:</label>
+        <select id="trainingSelect" name="trainingSelect" required>
+          <option value="">Choose one...</option>
+          <option>Leadership Skills Training</option>
+          <option>Technical Skills Bootcamp</option>
+          <option>DE&I Awareness Workshop</option>
+          <option>Change Management Seminar</option>
+        </select>
+
+        <button type="submit">Enroll Participant</button>
+      </form>
+    </div>
+
+   
+    <div class="section">
+      <h2>📖 Learning Support</h2>
+      <form id="supportForm">
+        <label for="supportTopic">Support Topic:</label>
+        <input type="text" id="supportTopic" name="supportTopic" placeholder="e.g., Need access to course materials" required>
+
+        <label for="supportMessage">Message:</label>
+        <textarea id="supportMessage" name="supportMessage" rows="4" placeholder="Describe your support request..." required></textarea>
+
+        <button type="submit">Submit Support Request</button>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    
+    document.getElementById('enrollForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("🎉 Participant has been successfully enrolled!");
+      this.reset();
+    });
+
+    
+    document.getElementById('supportForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("🛠️ Your learning support request has been submitted!");
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>

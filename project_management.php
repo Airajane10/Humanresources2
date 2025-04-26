@@ -1,0 +1,144 @@
+<?php
+// project_management.php
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Management Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color:rgb(59, 65, 70);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    h1, h2 {
+      color: #003366;
+      text-align: center;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #004080;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #002f5c;
+    }
+
+    .table-section table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table-section th, .table-section td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    .table-section th {
+      background-color: #cce5ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📁 Project Management</h1>
+
+    <section>
+      <h2>📅 Project Planning</h2>
+      <form>
+        <label for="project_name">Project Name:</label>
+        <input type="text" id="project_name" name="project_name" required>
+
+        <label for="description">Project Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <label for="deadline">Deadline:</label>
+        <input type="date" id="deadline" name="deadline" required>
+
+        <button type="submit">Add Project</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>📞 Stakeholder Communication</h2>
+      <form>
+        <label for="stakeholder_name">Stakeholder Name:</label>
+        <input type="text" id="stakeholder_name" name="stakeholder_name" required>
+
+        <label for="communication">Communication Log:</label>
+        <textarea id="communication" name="communication" rows="4" required></textarea>
+
+        <button type="submit">Log Communication</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>🧰 Resource Allocation</h2>
+      <form>
+        <label for="resource_name">Resource Name:</label>
+        <input type="text" id="resource_name" name="resource_name" required>
+
+        <label for="allocation">Allocation Details:</label>
+        <textarea id="allocation" name="allocation" rows="3" required></textarea>
+
+        <label for="project_assigned">Assigned Project:</label>
+        <input type="text" id="project_assigned" name="project_assigned" required>
+
+        <button type="submit">Allocate Resource</button>
+      </form>
+    </section>
+
+    <section class="table-section">
+      <h2>📋 Sample Records</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Section</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Project Planning</td><td>New Website Launch - Deadline: 2025-06-30</td></tr>
+          <tr><td>Stakeholder Communication</td><td>Meeting with CEO on roadmap</td></tr>
+          <tr><td>Resource Allocation</td><td>John Doe assigned to Website Launch</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</body>
+</html>

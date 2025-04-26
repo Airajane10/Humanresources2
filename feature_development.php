@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feature Development Dashboard</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5fbff;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+      text-align: center;
+      color: #004080;
+      margin-bottom: 40px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-card {
+      background: #eaf3ff;
+      border-left: 6px solid #0074d9;
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: scale(1.02);
+    }
+
+    .feature-card h2 {
+      color: #004080;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      margin: 0;
+    }
+
+    .status {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      color: green;
+    }
+
+    .button-link {
+      margin-top: 15px;
+      display: inline-block;
+      padding: 8px 12px;
+      background-color: #004080;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .button-link:hover {
+      background-color: #002f5c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚙️ Feature Development Dashboard</h1>
+
+    <div class="features-grid">
+
+      
+      <div class="feature-card">
+        <h2>👤 Employee Profile Management</h2>
+        <p>Develop functionality for employees to view and update their personal information, job details, and emergency contacts.</p>
+        <div class="status">Status: In Development</div>
+        <a href="profile_management.php" class="button-link">Manage Profiles</a>
+      </div>
+
+      
+      <div class="feature-card">
+        <h2>📅 Leaves & Attendance</h2>
+        <p>Track employee attendance, apply and approve leaves, and view attendance reports by month or date.</p>
+        <div class="status">Status: In Progress</div>
+        <a href="attendance_leaves.php" class="button-link">Access Leave System</a>
+      </div>
+
+      
+      <div class="feature-card">
+        <h2>💰 Payroll & Compensation</h2>
+        <p>Design salary structure, view payslips, bonuses, and manage payroll processing and approval.</p>
+        <div class="status">Status: Coming Soon</div>
+        <a href="payroll_compensation.php" class="button-link">Go to Payroll</a>
+      </div>
+
+      
+      <div class="feature-card">
+        <h2>🎁 Benefits Management</h2>
+        <p>Track employee benefits like insurance, health programs, retirement plans, and company perks.</p>
+        <div class="status">Status: Planning</div>
+        <a href="benefits_management.php" class="button-link">Manage Benefits</a>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

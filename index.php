@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkBreak Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <style>
+    /* Basic styles - you should move these to dashboard.css for better organization */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex; /* Use flexbox for the main layout */
+        min-height: 100vh; /* Ensure full viewport height */
+    }
+
+    .sidebar {
+        width: 250px; /* Adjust as needed */
+        background-color: #2c3e50; /* Darker sidebar background */
+        color: #fff;
+        padding: 20px 0;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Add a shadow for emphasis */
+        height: 100%; /* Make sidebar full height */
+        overflow-y: auto; /* In case the content is too long */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar-top {
+        margin-bottom: 20px;
+        text-align: center; /* Center the admin image and name */
+    }
+
+    .admin-image {
+        width: 100px; /* Adjust size as needed */
+        height: 100px;
+        border-radius: 50%; /* Make it a circle */
+        object-fit: cover; /* Ensure image fills the circle nicely */
+        margin-bottom: 10px;
+        border: 2px solid #fff; /* Optional: Add a border */
+    }
+
+    .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        flex: 1;
+        width: 100%;
+    }
+
+    .sidebar-menu li {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #34495e; /* Add a separator line */
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Smooth transition on hover */
+    }
+
+    .sidebar-menu li:hover {
+        background-color: #3498db; /* Lighter background on hover */
+    }
+
+    .sidebar-menu li a {
+        color: #fff;
+        text-decoration: none;
+        display: block; /* Make the whole li clickable */
+    }
+
+    .sidebar-menu li.has-submenu > a {
+        display: flex; /* Use flexbox to align the text and arrow */
+        justify-content: space-between; /* Space them out */
+        align-items: center; /* Vertically center items */
+    }
+
+    .sidebar-menu li.has-submenu > a::after {
+        content: "▼"; /* Down arrow character */
+        font-size: 0.8em; /* Adjust size if needed */
+    }
+
+    .submenu {
+        list-style: none;
+        padding: 0;
+        margin-left: 20px; /* Indent the submenu items */
+        display: none; /* Initially hide the submenu */
+        background-color: #2c3e50;
+    }
+
+    .submenu li {
+        padding: 10px 12px;
+        border-bottom: 1px solid #34495e;
+    }
+
+    .submenu li:last-child{
+        border-bottom: none;
+    }
+
+    .submenu li a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+    }
+
+    .submenu li a:hover {
+        color: #fff;
+    }
+
+    .main-content {
+        flex: 1; /* Take up the remaining space */
+        padding: 20px;
+        background-color: #fff; /* White background for main content */
+        overflow-y: auto;  /* add scroll bar if content overflows */
+    }
+
+    h1 {
+        color: #2c3e50; /* Dark heading color */
+        margin-bottom: 20px;
+    }
+
+    #loaded-content {
+        padding: 15px;
+        border: 1px solid #ddd; /* Light border */
+        border-radius: 8px; /* Rounded corners */
+        background-color: #f9f9f9; /* Very light background */
+        height: 100%;
+    }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-top">
+            <img src="admin-avatar.png" alt="Admin" class="admin-avatar">
+            <p style="color: #fff; font-size: 18px; font-weight: bold;">Admin</p>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="has-submenu">
+                <a href="#">Dashboard</a>
+                <ul class="submenu" id="dashboard-submenu">
+                    <li><a href="?module=training">Training Management</a>
+                    <ul class="submenu" id="training-submenu">
+                    <li><a href="?module=planning.php">Planning</a></li>
+                    <li><a href="?module=monitoring.php">Monitoring</a></li>
+                    <li><a href="?module=execution.php">Execution</a></li>
+                     <li><a href="?module=trainer_selection.php">Trainer Selection</a></li>
+                </ul>
+                    </li>
+                    <li><a href="?module=learning">Learning Management</a>
+                        <ul class="submenu" id="learning-submenu">
+                            <li><a href="?module=identify_learning_needs">Identify Learning Needs</a></li>
+                            <li><a href="?module=evaluate_learning_outcomes">Evaluate Learning Outcomes</a></li>
+                            <li><a href="?module=develop_learning_content">Develop Learning Content</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="?module=employee">Employee Self-Service</a>
+                        <ul class="submenu" id="employee-submenu">
+                            <li><a href="?module=deployment_go_live">Deployment Go-Live</a></li>
+                            <li><a href="?module=content_feature_development">Content and Feature Development</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="?module=competency">Competency Management</a>
+                        <ul class="submenu" id="competency-submenu">
+                            <li><a href="?module=competency_tracking_reporting">Competency Tracking and Reporting</a></li>
+                            <li><a href="?module=performance_evaluation">Performance Evaluation</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="?module=succession">Succession Planning</a>
+                        <ul class="submenu" id="succession-submenu">
+                            <li><a href="?module=project_management">Project Management</a></li>
+                            <li><a href="?module=implementation">Implementation</a></li>
+                            <li><a href="?module=talent_implementation">Talent Implementation</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+<li><a href="?module=training.php">Admin Settings</a></li>
+<li><a href="?module=systemsettings.php">System Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h1>    </h1>
+        <div id="loaded-content">
+            <?php
+            if (isset($_GET['module'])) {
+              $module = $_GET['module'];
+              $filepath = 'modules/' . $module . '.php';
+
+                if (file_exists($filepath)) {
+                    include $filepath;
+                } else {
+                    echo " </p>";
+                }
+              } else 
+              ?>
+              <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                  <?php
+             echo "<img src='image.jpg' style='margin: 0 10px; border-radius: 8px; max-width: 150px; height: auto;'>";
+               echo "<p style='font-family: \"Georgia\", Georgia; color: #000000; text-align: center; font-size: 3.2em; margin-bottom: 20px;'>WELCOME TO HUMAN RESOURCES 2 </p>";
+               echo "<p style='font-family: \"Arial\", Arial; color:rgb(0, 0, 0); text-align: center; font-size: 1.5em; margin-bottom: 20px;'>This system provides a structured approach to managing key human resources functions. As illustrated in this Work Breakdown Structure, HR2 offers tools for Training Management, Learning Management, Employee Self-Service, Competency Management, and Succession Planning, designed to streamline your HR processes and support your organization's success.</p>";
+               ?>
+        </div>
+    </div>
+    <script>
+    
+    const dashboardListItem = document.querySelector('.sidebar-menu li.has-submenu');
+    const dashboardSubmenu = document.getElementById('dashboard-submenu');
+    const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+    const loadedContent = document.getElementById('loaded-content');
+
+    
+    dashboardListItem.addEventListener('click', function() {
+        
+        if (dashboardSubmenu.style.display === 'none' || dashboardSubmenu.style.display === '') {
+            dashboardSubmenu.style.display = 'block';
+        } else {
+            dashboardSubmenu.style.display = 'none';
+        }
+    });
+
+    
+    const dashboardLink = dashboardListItem.querySelector('a');
+    dashboardLink.addEventListener('click', function(event){
+        event.preventDefault();
+    })
+
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); 
+            const module = this.getAttribute('href').split('=')[1]; 
+             console.log(module);
+            if (module) {
+                fetch(`modules/${module}.php`)  
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to load module content.');
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        loadedContent.innerHTML = data; 
+                    })
+                    .catch(error => {
+                        loadedContent.innerHTML = `<p>Error: ${error.message}</p>`;
+                    });
+            }
+        });
+    });
+    </script>
+</body>
+</html>

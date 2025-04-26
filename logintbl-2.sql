@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS workbreak;
+USE workbreak;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    birthday DATE NOT NULL,
+    country VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);

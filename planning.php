@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Training Planning</title>
+  <link href="training.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f0faff;
+      margin: 0;
+      padding: 20px;
+      color: #002147;
+    }
+
+    h1 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .illustration {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .illustration img {
+      max-width: 500px;
+      height: auto;
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .form-section {
+      margin-bottom: 20px;
+    }
+
+    .form-section h3 {
+      color: navy;
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto 0 auto;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Training Planning</h1>
+
+  <div class="illustration">
+    <img src="mission.jpg" alt="Planning Illustration">
+    <p><strong>Plan your training efficiently by selecting the right methods and identifying key needs.</strong></p>
+  </div>
+  <form id="trainingPlanForm">
+  <div class="form-container">
+    <form>
+      <div class="form-section">
+        <h3>Training Methods</h3>
+        <label><input type="checkbox" name="method" value="Workshops"> Workshops</label>
+        <label><input type="checkbox" name="method" value="Seminars"> Seminars</label>
+        <label><input type="checkbox" name="method" value="E-Learning"> E-Learning</label>
+        <label><input type="checkbox" name="method" value="On-the-job"> On-the-job Training</label>
+        <label><input type="checkbox" name="method" value="Mentoring"> Mentoring</label>
+      </div>
+
+      <div class="form-section">
+        <h3>Training Needs</h3>
+        <label><input type="checkbox" name="need" value="Leadership"> Leadership Development</label>
+        <label><input type="checkbox" name="need" value="Compliance"> Compliance Training</label>
+        <label><input type="checkbox" name="need" value="Technical"> Technical Skills</label>
+        <label><input type="checkbox" name="need" value="DEI"> DE&I Training</label>
+        <label><input type="checkbox" name="need" value="Change"> Change Management</label>
+      </div>
+
+      <button type="submit">Submit Plan</button>
+      <p id="submitMessage" style="display:none; color: green; text-align:center; margin-top: 10px;">✅plan has been submitted.</p>
+  </form>
+</div>
+<script>
+  document.getElementById('trainingPlanForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    document.getElementById('submitMessage').style.display = 'block';
+  });
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learning Development Content</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #004080;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color:rgb(255, 255, 255);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .video-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.03);
+    }
+
+    .video-thumbnail {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .video-content {
+      padding: 15px;
+    }
+
+    .video-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #003366;
+    }
+
+    .video-description {
+      font-size: 14px;
+      color: #555;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📚 Learning Development Content</h1>
+  </header>
+
+  <div class="container">
+    <div class="video-grid">
+
+      <div class="video-card">
+        <img class="video-thumbnail" src="IntroHR.jpeg" alt="HR Basics">
+        <div class="video-content">
+          <div class="video-title">HR Basics: Introduction to Human Resources</div>
+          <div class="video-description">Explore the fundamental principles of Human Resources in this beginner-friendly course.</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img class="video-thumbnail" src="MRS.jpeg" alt="Recruitment Strategies">
+        <div class="video-content">
+          <div class="video-title">Modern Recruitment Strategies</div>
+          <div class="video-description">Learn effective recruitment techniques to attract top talent in today's competitive market.</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img class="video-thumbnail" src="boost.jpeg" alt="Employee Engagement">
+        <div class="video-content">
+          <div class="video-title">Boosting Employee Engagement</div>
+          <div class="video-description">Discover best practices to engage and retain employees in your organization.</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img class="video-thumbnail" src="HRC.jpeg" alt="Compliance Training">
+        <div class="video-content">
+          <div class="video-title">HR Compliance Essentials</div>
+          <div class="video-description">Understand legal and ethical practices in HR to ensure workplace compliance.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

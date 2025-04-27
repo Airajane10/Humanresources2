@@ -13,6 +13,12 @@
             display: block;
             margin-bottom: 5px;
         }
+
+        .verification-container {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -31,6 +37,14 @@
             <br>
             <button type="submit">Login</button>
         </form>
+
+        <div id="verificationContainer" class="verification-container">
+            <h2>Verify Your Email</h2>
+            <p>A verification code has been sent to your email address (simulated).</p>
+            <label for="verificationCode">Verification Code:</label><br>
+            <input type="text" id="verificationCode" name="verificationCode" required><br><br>
+            <button id="verifyButton" type="button">Verify Code</button>
+        </div>
     </div>
 
     <script>
@@ -49,7 +63,10 @@
                 sessionStorage.removeItem('registeredPassword');
             }
 
-            document.querySelector('#loginForm').addEventListener('submit', function(event) {
+            const loginForm = document.querySelector('#loginForm');
+            const verificationContainer = document.querySelector('#verificationContainer');
+
+            loginForm.addEventListener('submit', function(event) {
                 event.preventDefault();
                 const email = document.querySelector('input[name="email"]').value;
                 const password = document.querySelector('input[name="password"]').value;
@@ -64,16 +81,33 @@
 
                 if (isHuman) {
                     if (email === storedEmail && password === storedPassword && storedEmail !== null) {
-                        sessionStorage.setItem('username', 'Registered User');
-                        window.location.href = 'index.html';
+                        // Simulate sending verification code
+                        console.log("Simulating sending verification code to:", email);
+                        loginForm.style.display = 'none';
+                        verificationContainer.style.display = 'block';
                     } else if (email === 'test@example.com' && password === 'password123') {
-                        sessionStorage.setItem('username', 'Test User');
-                        window.location.href = 'index.html';
+                        // Simulate sending verification code
+                        console.log("Simulating sending verification code to:", email);
+                        loginForm.style.display = 'none';
+                        verificationContainer.style.display = 'block';
                     } else {
                         alert('Invalid email or password (simulated).');
                     }
                 } else {
                     alert('Please confirm you are not a robot.');
+                }
+            });
+
+            const verifyButton = document.querySelector('#verifyButton');
+            verifyButton.addEventListener('click', function() {
+                const verificationCode = document.querySelector('input[name="verificationCode"]').value;
+
+                // Simulate verification code check
+                if (verificationCode === '123456') {
+                    sessionStorage.setItem('username', 'Verified User');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Invalid verification code.');
                 }
             });
         });

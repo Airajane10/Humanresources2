@@ -18,11 +18,11 @@
     </div>
 
     <script>
-        // Simulated: Generate and store a code
+        
         const generatedCode = Math.floor(100000 + Math.random() * 900000).toString(); // Random 6-digit code
         localStorage.setItem('verificationCode', generatedCode);
 
-        // Simulate sending "email"
+        
         alert("Simulated: Your verification code is: " + generatedCode);
 
         function verifyCode() {
@@ -31,7 +31,7 @@
 
             if (userCode === realCode) {
                 alert("Email verified successfully!");
-                window.location.href = "index.html"; // Redirect to index
+                window.location.href = "index.html"; 
             } else {
                 alert("Invalid code. Please try again.");
             }

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>System Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .settings-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: #34495e;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #bdc3c7;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .save-button {
+      width: 100%;
+      padding: 12px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .save-button:hover {
+      background-color: #219150;
+    }
+
+    .module-list {
+      margin-top: 30px;
+    }
+
+    .module-item {
+      background-color: #f7f9fa;
+      border: 1px solid #dcdde1;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .module-item span {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="settings-container">
+  <h2>System Settings</h2>
+  <form id="moduleForm">
+    <div class="form-group">
+      <label for="moduleName">Module Name</label>
+      <input type="text" id="moduleName" name="moduleName" placeholder="Ex: Training Management" required>
+    </div>
+
+    <div class="form-group">
+      <label for="moduleLink">Module Link</label>
+      <input type="text" id="moduleLink" name="moduleLink" placeholder="Ex: training.html" required>
+    </div>
+
+    <button type="submit" class="save-button">Add Module</button>
+  </form>
+
+  <div class="module-list" id="moduleList">
+    <h3>Added Modules:</h3>
+    
+  </div>
+</div>
+
+<script>
+document.getElementById('moduleForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('moduleName').value.trim();
+  const link = document.getElementById('moduleLink').value.trim();
+
+  if (name && link) {
+    addModule(name, link);
+e
+    saveModuleToStorage(name, link);
+
+    // Clear inputs
+    this.reset();
+  }
+});
+
+function addModule(name, link) {
+  const moduleList = document.getElementById('moduleList');
+  const moduleItem = document.createElement('div');
+  moduleItem.className = 'module-item';
+  moduleItem.innerHTML = `<span>${name}</span> ➔ <a href="${link}" target="_blank">${link}</a>`;
+  moduleList.appendChild(moduleItem);
+}
+
+function saveModuleToStorage(name, link) {
+  let modules = JSON.parse(localStorage.getItem('modules')) || [];
+  modules.push({ name, link });
+  localStorage.setItem('modules', JSON.stringify(modules));
+}
+
+// Load saved modules when page loads
+window.onload = function() {
+  const savedModules = JSON.parse(localStorage.getItem('modules')) || [];
+  savedModules.forEach(module => addModule(module.name, module.link));
+};
+</script>
+
+</body>
+</html>

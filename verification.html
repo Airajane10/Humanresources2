@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Verification - WorkBreakdown</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align:center; font-family: Georgia;">EMAIL VERIFICATION</h1>
+        <p style="text-align:center;">We have sent a verification code to your email. Please enter it below:</p>
 
+        <form style="text-align:center;" onsubmit="event.preventDefault(); verifyCode();">
+            <input type="text" id="verificationCode" placeholder="Enter Verification Code" required>
+            <br><br>
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+
+    <script>
+        // Simulated: Generate and store a code
+        const generatedCode = Math.floor(100000 + Math.random() * 900000).toString(); // Random 6-digit code
+        localStorage.setItem('verificationCode', generatedCode);
+
+        // Simulate sending "email"
+        alert("Simulated: Your verification code is: " + generatedCode);
+
+        function verifyCode() {
+            const userCode = document.getElementById('verificationCode').value;
+            const realCode = localStorage.getItem('verificationCode');
+
+            if (userCode === realCode) {
+                alert("Email verified successfully!");
+                window.location.href = "index.html"; // Redirect to index
+            } else {
+                alert("Invalid code. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>

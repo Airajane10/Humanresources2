@@ -20,7 +20,7 @@ h2 {
 }
 
 form {
-    background-color: #ffffff; /* Darker sidebar background */
+    background-color: #ffffff; 
   padding: 20px;
   display: flex;
   flex-direction: column;

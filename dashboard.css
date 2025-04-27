@@ -2,34 +2,34 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex; /* Use flexbox for the main layout */
-    min-height: 100vh; /* Ensure full viewport height */
+    display: flex; 
+    min-height: 100vh; 
 }
 
 .sidebar {
-    width: 250px; /* Adjust as needed */
-    background-color: #2c3e50; /* Darker sidebar background */
+    width: 250px; 
+    background-color: #2c3e50; 
     color: #fff;
     padding: 20px 0;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Add a shadow for emphasis */
-    height: 100%; /* Make sidebar full height */
-    overflow-y: auto; /* In case the content is too long */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); 
+    height: 100%; 
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
 }
 
 .sidebar-top {
     margin-bottom: 20px;
-    text-align: center; /* Center the admin image and name */
+    text-align: center; 
 }
 
 .admin-image {
-    width: 100px; /* Adjust size as needed */
+    width: 100px; 
     height: 100px;
-    border-radius: 50%; /* Make it a circle */
-    object-fit: cover; /* Ensure image fills the circle nicely */
+    border-radius: 50%; 
+    object-fit: cover; 
     margin-bottom: 10px;
-    border: 2px solid #fff; /* Optional: Add a border */
+    border: 2px solid #fff; 
 }
 
 .sidebar-menu {
@@ -43,40 +43,43 @@ body {
 .sidebar-menu li {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #34495e; /* Add a separator line */
+    border-bottom: 1px solid #34495e; 
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    transition: background-color 0.3s ease; 
 }
 
 .sidebar-menu li:hover {
-    background-color: #3498db; /* Lighter background on hover */
+    background-color: #3498db; 
 }
 
 .sidebar-menu li a {
     color: #fff;
     text-decoration: none;
-    display: block; /* Make the whole li clickable */
+    display: block; 
 }
 
 .sidebar-menu li.has-submenu > a {
-    display: flex; /* Use flexbox to align the text and arrow */
-    justify-content: space-between; /* Space them out */
-    align-items: center; /* Vertically center items */
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
 }
 
 .sidebar-menu li.has-submenu > a::after {
-    content: "▼"; /* Down arrow character */
-    font-size: 0.8em; /* Adjust size if needed */
+    content: "▼"; 
+    font-size: 0.8em; 
 }
 
 .submenu {
     list-style: none;
     padding: 0;
-    margin-left: 20px; /* Indent the submenu items */
-    display: none; /* Initially hide the submenu */
+    margin-left: 20px;
     background-color: #2c3e50;
+    
+    max-height: 0;          
+    overflow: hidden;     
+    transition: max-height 0.4s ease; 
 }
-
+    
 .submenu li {
     padding: 10px 12px;
     border-bottom: 1px solid #34495e;
@@ -97,24 +100,24 @@ body {
 }
 
 .main-content {
-    flex: 1; /* Take up the remaining space */
+    flex: 1; 
     padding: 20px;
-    background-color: #fff; /* White background for main content */
-    overflow-y: auto;  /* add scroll bar if content overflows */
+    background-color: #fff; 
+    overflow-y: auto;  
 }
 
 h1 {
-    color: #2c3e50; /* Dark heading color */
+    color: #2c3e50; 
     margin-bottom: 20px;
-    align-items: center; /* Center items horizontally */
+    align-items: center; 
     text-align: center;
 }
 
 #loaded-content {
     padding: 15px;
-    border: 1px solid #ddd; /* Light border */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #f9f9f9; /* Very light background */
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    background-color: #f9f9f9;
     height: 100%;
 }
 

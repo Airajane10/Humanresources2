@@ -65,6 +65,11 @@
                 console.log("Entered Password:", password);
                 console.log("Human Check:", isHuman);
 
+                // ADD THESE LINES:
+                console.log("Checking localStorage before getItem:");
+                console.log("localStorage.getItem('registeredEmail'):", localStorage.getItem('registeredEmail'));
+                console.log("localStorage.getItem('registeredPassword'):", localStorage.getItem('registeredPassword'));
+
                 const storedEmail = localStorage.getItem('registeredEmail'); // Use localStorage
                 const storedPassword = localStorage.getItem('registeredPassword'); // Use localStorage
 

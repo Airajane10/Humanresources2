@@ -58,3 +58,19 @@ button:hover {
 }
 
 
+input[type="text"],
+input[type="Username"],
+input[type="password"],
+input[type="email"],
+input[type="date"] 
+  width: calc(100% - 16px); 
+  padding: 8px; 
+  margin-bottom: 10px; 
+  border: 1px solid #000000;
+  border-radius: 4px; 
+  background-color: #d0f0fafb;
+  color: #0a0a0a; 
+  font-family: 'Georgia', monospace; 
+  font-size: 0.9em; 
+  display: inline-block; 
+}

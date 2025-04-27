@@ -20,13 +20,14 @@
         <h1 style="text-align:center; font-family: Georgia;">WELCOME TO WORKBREAK STRUCTURE</h1>
         <form id="loginForm" method="POST" style="text-align:center;">
             <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
+            <input type="email" id="email" name="email" required autocomplete="email"><br><br>
             <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" required><br><br>
+            <input type="password" id="password" name="password" required autocomplete="current-password"><br><br>
 
             <div class="captcha-container">
                 <label for="captcha">Are you a human?</label>
-                <input type="checkbox" id="captcha" name="captcha">
+                <input type="checkbox" id="captcha" name="captcha"><br>
+                <small>Checking this helps us prevent automated spam.</small>
             </div>
             <br>
             <button type="submit">Login</button>

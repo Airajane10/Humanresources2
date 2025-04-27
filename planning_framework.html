@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Succession Planning Framework</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color:rgb(77, 81, 83);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #003366;
+    }
+
+    .section {
+      margin-top: 40px;
+    }
+
+    ul, ol {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .criteria-card {
+      background-color: #e6f0ff;
+      border-left: 5px solid #004080;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .process-steps {
+      background-color: #f0f8ff;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .process-steps h3 {
+      color: #004080;
+    }
+
+    .process-steps ol li {
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📋 Succession Planning Framework</h1>
+
+    <div class="section">
+      <h2>🎯 Criteria for Selecting Successors</h2>
+
+      <div class="criteria-card">
+        <strong>1. Performance History:</strong> Consistent demonstration of high-quality work and reliability.
+      </div>
+
+      <div class="criteria-card">
+        <strong>2. Leadership Potential:</strong> Ability to inspire, guide teams, and drive strategic goals.
+      </div>
+
+      <div class="criteria-card">
+        <strong>3. Cultural Fit:</strong> Alignment with the organization’s values and long-term vision.
+      </div>
+
+      <div class="criteria-card">
+        <strong>4. Learning Agility:</strong> Willingness and ability to quickly adapt and learn new skills.
+      </div>
+
+      <div class="criteria-card">
+        <strong>5. Career Aspirations:</strong> Interest in advancement and willingness to take on responsibility.
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>⚙️ Succession Planning Process</h2>
+      <div class="process-steps">
+        <h3>Step-by-Step Framework:</h3>
+        <ol>
+          <li><strong>Identify Key Roles:</strong> Determine positions critical to organizational success.</li>
+          <li><strong>Assess Talent Pool:</strong> Evaluate current employees based on selection criteria.</li>
+          <li><strong>Create Successor Profiles:</strong> Match employees to key roles with development plans.</li>
+          <li><strong>Develop Talent:</strong> Assign mentorships, training, and stretch projects to candidates.</li>
+          <li><strong>Monitor & Evaluate:</strong> Regularly assess progress and readiness of successors.</li>
+          <li><strong>Update Plan:</strong> Revisit and revise succession plans annually or as roles change.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

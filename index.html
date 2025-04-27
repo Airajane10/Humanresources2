@@ -202,52 +202,47 @@
 
   
   <script>
-    const dashboardListItem = document.querySelector('.sidebar-menu li.has-submenu');
+const dashboardListItem = document.querySelector('.sidebar-menu li.has-submenu');
 const dashboardSubmenu = document.getElementById('dashboard-submenu');
 const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
 const loadedContent = document.getElementById('loaded-content');
 
-// Toggle the Dashboard submenu
-dashboardListItem.addEventListener('click', function () {
-  if (dashboardSubmenu.style.display === 'none' || dashboardSubmenu.style.display === '') {
-    dashboardSubmenu.style.display = 'block';
-  } else {
-    dashboardSubmenu.style.display = 'none';
-  }
-});
-
-
-const dashboardLink = dashboardListItem.querySelector('a');
-dashboardLink.addEventListener('click', function (event) {
-  event.preventDefault();
-});
-
-// Handle all sidebar link clicks
-sidebarLinks.forEach(link => {
-  link.addEventListener('click', function (event) {
-    event.preventDefault();
-    const href = this.getAttribute('href');
-    
-    
-    if (href.includes('module=')) {
-      const module = href.split('=')[1];
-      console.log(module);
-
-      if (module) {
-        fetch(`modules/${module}.html`)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Failed to load module content.');
-            }
-            return response.text();
-          })
-          .then(data => {
-            loadedContent.innerHTML = data;
-          })
-          .catch(error => {
-            loadedContent.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
-          });
-      }
+// Toggle submenu with smooth animation
+dashboardListItem.addEventListener('click', function(event) {
+    event.stopPropagation(); // Prevent click from closing immediately
+    if (dashboardSubmenu.style.maxHeight && dashboardSubmenu.style.maxHeight !== '0px') {
+        dashboardSubmenu.style.maxHeight = '0px';  // Collapse
+    } else {
+        dashboardSubmenu.style.maxHeight = dashboardSubmenu.scrollHeight + 'px';  // Expand
     }
-  });
 });
+
+// Prevent default action for Dashboard link
+const dashboardLink = dashboardListItem.querySelector('a');
+dashboardLink.addEventListener('click', function(event){
+    event.preventDefault();
+});
+
+// Load content dynamically (your original code)
+sidebarLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        const module = this.getAttribute('href').split('=')[1];
+        if (module) {
+            fetch(`modules/${module}.php`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load module content.');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    loadedContent.innerHTML = data;
+                })
+                .catch(error => {
+                    loadedContent.innerHTML = `<p>Error: ${error.message}</p>`;
+                });
+        }
+    });
+});
+</script>

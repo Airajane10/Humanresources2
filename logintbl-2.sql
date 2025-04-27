@@ -1,4 +1,5 @@
-CREATE DATABASE IF NOT EXISTS workbreak;
+DROP DATABASE IF EXISTS workbreak;
+CREATE DATABASE workbreak;
 USE workbreak;
 
 CREATE TABLE users (
@@ -7,5 +8,5 @@ CREATE TABLE users (
     birthday DATE NOT NULL,
     country VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
+    password_hash VARCHAR(255) NOT NULL
 );

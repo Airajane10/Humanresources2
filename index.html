@@ -177,29 +177,22 @@
         </ul>
     </div>
     <div class="main-content">
-        <h1>    </h1>
-        <div id="loaded-content">
-            <?php
-            if (isset($_GET['module'])) {
-              $module = $_GET['module'];
-              $filepath = 'modules/' . $module . '.php';
-
-                if (file_exists($filepath)) {
-                    include $filepath;
-                } else {
-                    echo " </p>";
-                }
-              } else
-              ?>
-              <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                  <?php
-              echo "<img src='image.png' style='margin: 0 10px; border-radius: 8px; max-width: 150px; height: auto;'>";
-                echo "<p style='font-family: \"Georgia\", Georgia; color: #000000; text-align: center; font-size: 3.2em; margin-bottom: 20px;'>WELCOME TO HUMAN RESOURCES 2 </p>";
-                echo "<p style='font-family: \"Arial\", Arial; color:rgb(0, 0, 0); text-align: center; font-size: 1.5em; margin-bottom: 20px;'>This system provides a structured approach to managing key human resources functions. As illustrated in this Work Breakdown Structure, HR2 offers tools for Training Management, Learning Management, Employee Self-Service, Competency Management, and Succession Planning, designed to streamline your HR processes and support your organization's success.</p>";
-                ?>
+    <h1></h1>
+    <div id="loaded-content">
+        <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <img src="image.png" style="margin: 0 10px; border-radius: 8px; max-width: 150px; height: auto;" alt="Welcome Image">
+            <p style="font-family: 'Georgia', Georgia; color: #000000; text-align: center; font-size: 3.2em; margin-bottom: 20px;">
+                WELCOME TO HUMAN RESOURCES 2
+            </p>
+            <p style="font-family: 'Arial', Arial; color: rgb(0, 0, 0); text-align: center; font-size: 1.5em; margin-bottom: 20px;">
+                This system provides a structured approach to managing key human resources functions. 
+                As illustrated in this Work Breakdown Structure, HR2 offers tools for Training Management, 
+                Learning Management, Employee Self-Service, Competency Management, and Succession Planning, 
+                designed to streamline your HR processes and support your organization's success.
+            </p>
         </div>
     </div>
-    <script>
+</div>
 
     const dashboardListItem = document.querySelector('.sidebar-menu li.has-submenu');
     const dashboardSubmenu = document.getElementById('dashboard-submenu');

@@ -33,12 +33,12 @@ form {
 }
 
 label {
-  display: block;
+  display: flex;
   margin-bottom: 5px;
   color: #000000;
   text-align: left;
   text-shadow: 1px 1px #000000;
-  width: 100%;
+  width: 100%; 
 }
 
 button {

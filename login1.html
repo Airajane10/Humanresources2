@@ -67,36 +67,39 @@
             const verificationContainer = document.querySelector('#verificationContainer');
 
             loginForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const email = document.querySelector('input[name="email"]').value;
-                const password = document.querySelector('input[name="password"]').value;
-                const isHuman = document.querySelector('#captcha').checked;
+    event.preventDefault();
+    const email = document.querySelector('input[name="email"]').value;
+    const password = document.querySelector('input[name="password"]').value;
+    const isHuman = document.querySelector('#captcha').checked;
 
-                console.log("Email:", email);
-                console.log("Password:", password);
-                console.log("Human Check:", isHuman);
+    console.log("Entered Email:", email);
+    console.log("Entered Password:", password);
+    console.log("Human Check:", isHuman);
 
-                const storedEmail = sessionStorage.getItem('registeredEmail');
-                const storedPassword = sessionStorage.getItem('registeredPassword');
+    const storedEmail = sessionStorage.getItem('registeredEmail');
+    const storedPassword = sessionStorage.getItem('registeredPassword');
 
-                if (isHuman) {
-                    if (email === storedEmail && password === storedPassword && storedEmail !== null) {
-                        
-                        console.log("Simulating sending verification code to:", email);
-                        loginForm.style.display = 'none';
-                        verificationContainer.style.display = 'block';
-                    } else if (email === 'test@example.com' && password === 'password123') {
-                      
-                        console.log("Simulating sending verification code to:", email);
-                        loginForm.style.display = 'none';
-                        verificationContainer.style.display = 'block';
-                    } else {
-                        alert('Invalid email or password (simulated).');
-                    }
-                } else {
-                    alert('Please confirm you are not a robot.');
-                }
-            });
+    console.log("Stored Email:", storedEmail);
+    console.log("Stored Password:", storedPassword);
+
+    if (isHuman) {
+        console.log("Comparing Entered Email:", email, "with Stored Email:", storedEmail);
+        console.log("Comparing Entered Password:", password, "with Stored Password:", storedPassword);
+        if (email === storedEmail && password === storedPassword && storedEmail !== null) {
+            console.log("Simulating sending verification code to:", email);
+            loginForm.style.display = 'none';
+            verificationContainer.style.display = 'block';
+        } else if (email === 'test@example.com' && password === 'password123') {
+            console.log("Simulating sending verification code to:", email);
+            loginForm.style.display = 'none';
+            verificationContainer.style.display = 'block';
+        } else {
+            alert('Invalid email or password (simulated).');
+        }
+    } else {
+        alert('Please confirm you are not a robot.');
+    }
+});
 
             const verifyButton = document.querySelector('#verifyButton');
             verifyButton.addEventListener('click', function() {

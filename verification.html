@@ -107,6 +107,15 @@ label {
   text-shadow: 1px 1px #ffffff;
   width: 100%;
 }
+       .verification-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
 
 button {
   background-color: #132797;
@@ -131,7 +140,7 @@ button:hover {
         <p style="text-align:center;">We have sent a verification code to your email. Please enter it below:</p>
 
         <form style="text-align:center;" onsubmit="event.preventDefault(); verifyCode();">
-            <input type="text" id="verificationCode" placeholder="Enter Verification Code" required>
+            <input type="text" id="verificationCode" class="verification-input" placeholder="Enter Verification Code" required>
             <br><br>
             <button type="submit">Verify</button>
         </form>

@@ -74,3 +74,7 @@ input[type="date"]
   font-size: 0.9em; 
   display: inline-block; 
 }
+
+.back-button:hover {
+      background: #c0392b;
+}

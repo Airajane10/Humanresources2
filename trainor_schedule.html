@@ -200,12 +200,12 @@ h1 {
   cursor: pointer;
 }
     .available {
-  background-color: #b2f2bb; /* light green */
+  background-color: Green; 
   font-weight: bold;
 }
 
 .rest-day {
-  background-color: #d0f0ff; /* light blue */
+  background-color: #d0f0ff; 
   font-style: italic;
 }
 </style>
@@ -232,6 +232,8 @@ h1 {
 <div class="legend">
 <span class="fully-booked">Fully Booked</span>
 <span class="partially-booked">Partially Booked</span>
+  <span class="available">Available</span>
+<span class="rest-day">Rest Days</span>
 </div>
 <div class="year-container" id="calendarContainer"></div>
 
@@ -328,7 +330,7 @@ function createCalendar(monthIndex) {
     if (highlights[day]) {
       dateDiv.classList.add(highlights[day]);
     } else if (availableDays.has(day)) {
-      dateDiv.classList.add('available'); // Green available
+      dateDiv.classList.add('available'); 
     }
 
     

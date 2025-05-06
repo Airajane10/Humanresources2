@@ -128,36 +128,52 @@
     .filter-section select {
       width: auto;
     }
+
+    .employment-status-section {
+      margin-top: 50px;
+    }
+
+    .employment-status-section th {
+      background-color: #ffebcc;
+      color: #663300;
+    }
+
+    .employment-status-section button.edit-btn,
+    .employment-status-section button.delete-btn {
+      padding: 5px 10px;
+      margin: 2px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .edit-btn {
+      background-color: #ffc107;
+      color: #000;
+    }
+
+    .delete-btn {
+      background-color: #dc3545;
+      color: white;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>📊 Competency Tracking System</h1>
-<a href="index.html" 
-   style="position: absolute; 
-          top: 20px; 
-          right: 20px; 
-          background-color: red; 
-          color: white; 
-          padding: 10px 16px; 
-          text-decoration: none; 
-          font-weight: bold; 
-          border-radius: 5px; 
-          border: none; 
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
-          transition: background-color 0.3s ease;"
-   onmouseover="this.style.backgroundColor='darkred'" 
-   onmouseout="this.style.backgroundColor='red'">
-   Back
-</a>
-    
+    <a href="index.html" 
+       style="position: absolute; top: 20px; right: 20px; background-color: red; color: white; padding: 10px 16px; text-decoration: none; font-weight: bold; border-radius: 5px; border: none; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); transition: background-color 0.3s ease;"
+       onmouseover="this.style.backgroundColor='darkred'" 
+       onmouseout="this.style.backgroundColor='red'">
+       Back
+    </a>
 
     <div class="competency-list">
       <h2>📋 Competency Records</h2>
       <table id="competencyTable">
         <thead>
           <tr>
-            <TH>Employee Image</th>
+            <th>Employee Image</th>
             <th>Employee Name</th>
             <th>Competency</th>
             <th>Level</th>
@@ -165,48 +181,21 @@
           </tr>
         </thead>
         <tbody>
-        <td><img src="admin-avatar.png" alt="Lias Vance" width="40" style="border-radius:50%;"></td>
-    <td>Lias Vance</td><td>Leadership</td><td>Advanced</td><td>2025-04-24</td>
-  </tr>
-  <tr>
-    <td><img src="admin-avatar.png" alt="Seraphina Bellweather" width="40" style="border-radius:50%;"></td>
-    <td>Seraphina Bellweather</td><td>Communication</td><td>Expert</td><td>2025-04-24</td>
-  </tr>
-  <tr>
-    <td><img src="admin-avatar.png" alt="Jasper Thorne" width="40" style="border-radius:50%;"></td>
-    <td>Jasper Thorne</td><td>Problem Solving</td><td>Intermediate</td><td>2025-04-24</td>
-  </tr>
-  <tr>
-    <td><img src="admin-avatar.png" alt="Luna Dubois" width="40" style="border-radius:50%;"></td>
-    <td>Luna Dubois</td><td>Teamwork</td><td>Advanced</td><td>2025-04-24</td>
-  </tr>
-  <tr>
-    <td><img src="admin-avatar.png" alt="Caleb Sterling" width="40" style="border-radius:50%;"></td>
-    <td>Caleb Sterling</td><td>Technical Skills</td><td>Expert</td><td>2025-04-24</td>
-  </tr>
-  <tr>
-    <td><img src="admin-avatar.png" alt="Aurora Finch" width="40" style="border-radius:50%;"></td>
-    <td>Aurora Finch</td><td>Leadership</td><td>Intermediate</td><td>2025-04-24</td>
-  </tr>
-  <tr>
-    <td><img src="admin-avatar.png" alt="Atticus Blackwood" width="40" style="border-radius:50%;"></td>
-    <td>Atticus Blackwood</td><td>Communication</td><td>Advanced</td><td>2025-04-24</td>
-  </tr>
-  <tr>
-    <td><img src="admin-avatar.png" alt="Willow Hayes" width="40" style="border-radius:50%;"></td>
-    <td>Willow Hayes</td><td>Teamwork</td><td>Expert</td><td>2025-04-24</td>
-  </tr>
-  <tr>
-    <td><img src="admin-avatar.png" alt="Silas Ramsey" width="40" style="border-radius:50%;"></td>
-    <td>Silas Ramsey</td><td>Technical Skills</td><td>Beginner</td><td>2025-04-24</td>
-  </tr>
-  <tr>
-    <td><img src="admin-avatar.png" alt="Juniper Klein" width="40" style="border-radius:50%;"></td>
-    <td>Juniper Klein</td><td>Problem Solving</td><td>Advanced</td><td>2025-04-24</td>
-  </tr>
-</tbody>
+          <tr><td><img src="admin-avatar.png" alt="Lias Vance" width="40" style="border-radius:50%;"></td><td>Lias Vance</td><td>Leadership</td><td>Advanced</td><td>2025-04-24</td></tr>
+          <tr><td><img src="admin-avatar.png" alt="Seraphina Bellweather" width="40" style="border-radius:50%;"></td><td>Seraphina Bellweather</td><td>Communication</td><td>Expert</td><td>2025-04-24</td></tr>
+          <tr><td><img src="admin-avatar.png" alt="Jasper Thorne" width="40" style="border-radius:50%;"></td><td>Jasper Thorne</td><td>Problem Solving</td><td>Intermediate</td><td>2025-04-24</td></tr>
+          <tr><td><img src="admin-avatar.png" alt="Luna Dubois" width="40" style="border-radius:50%;"></td><td>Luna Dubois</td><td>Teamwork</td><td>Advanced</td><td>2025-04-24</td></tr>
+          <tr><td><img src="admin-avatar.png" alt="Caleb Sterling" width="40" style="border-radius:50%;"></td><td>Caleb Sterling</td><td>Technical Skills</td><td>Expert</td><td>2025-04-24</td></tr>
+          <tr><td><img src="admin-avatar.png" alt="Aurora Finch" width="40" style="border-radius:50%;"></td><td>Aurora Finch</td><td>Leadership</td><td>Intermediate</td><td>2025-04-24</td></tr>
+          <tr><td><img src="admin-avatar.png" alt="Atticus Blackwood" width="40" style="border-radius:50%;"></td><td>Atticus Blackwood</td><td>Communication</td><td>Advanced</td><td>2025-04-24</td></tr>
+          <tr><td><img src="admin-avatar.png" alt="Willow Hayes" width="40" style="border-radius:50%;"></td><td>Willow Hayes</td><td>Teamwork</td><td>Expert</td><td>2025-04-24</td></tr>
+          <tr><td><img src="admin-avatar.png" alt="Silas Ramsey" width="40" style="border-radius:50%;"></td><td>Silas Ramsey</td><td>Technical Skills</td><td>Beginner</td><td>2025-04-24</td></tr>
+          <tr><td><img src="admin-avatar.png" alt="Juniper Klein" width="40" style="border-radius:50%;"></td><td>Juniper Klein</td><td>Problem Solving</td><td>Advanced</td><td>2025-04-24</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-<form id="competencyForm">
+    <form id="competencyForm">
       <h2>Update Employee Competency</h2>
       <label for="employee_name">Employee Name:</label>
       <input type="text" id="employee_name" required>
@@ -235,7 +224,7 @@
 
     <div class="report-section">
       <h2>📈 Generate Reports & Analyze Trends</h2>
-      <p>This section allows managers to generate employee competency reports and observe trends over time. Integration with charts and backend reporting tools is recommended for live usage.</p>
+      <p>This section allows managers to generate employee competency reports and observe trends over time.</p>
       <button onclick="alert('📥 Report generation not yet connected to backend.')">Generate Competency Report</button>
     </div>
 
@@ -246,9 +235,37 @@
       <p><strong>Employees at Expert Level:</strong> 3</p>
       <p><strong>Least Represented Competency:</strong> Technical Skills (Beginner)</p>
     </div>
-  </div>
 
-  <div class="filter-section">
+    <div class="employment-status-section">
+      <h2>👥 Employee Status Tracker</h2>
+      <form id="statusForm">
+        <label for="status_name">Employee Name:</label>
+        <input type="text" id="status_name" required>
+
+        <label for="employment_status">Employment Status:</label>
+        <select id="employment_status" required>
+          <option value="">--Select Status--</option>
+          <option value="New">New</option>
+          <option value="Retired">Retired</option>
+          <option value="Fired">Fired</option>
+        </select>
+
+        <button type="submit">Add Status Record</button>
+      </form>
+
+      <table id="statusTable">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="filter-section">
       <label for="filterCompetency">Filter by Competency:</label>
       <select id="filterCompetency">
         <option value="">All</option>
@@ -268,25 +285,24 @@
         <option value="Expert">Expert</option>
       </select>
     </div>
+  </div>
+
   <script>
     document.getElementById("competencyForm").addEventListener("submit", function(e) {
       e.preventDefault();
-
       const name = document.getElementById("employee_name").value;
       const competency = document.getElementById("competency").value;
       const level = document.getElementById("level").value;
       const date = new Date().toLocaleDateString();
-
       const table = document.getElementById("competencyTable").getElementsByTagName("tbody")[0];
       const newRow = table.insertRow();
-
       newRow.innerHTML = `
+        <td><img src="admin-avatar.png" width="40" style="border-radius:50%;"></td>
         <td>${name}</td>
         <td>${competency}</td>
         <td>${level}</td>
         <td>${date}</td>
       `;
-
       this.reset();
     });
 
@@ -297,16 +313,48 @@
       const competencyFilter = document.getElementById("filterCompetency").value;
       const levelFilter = document.getElementById("filterLevel").value;
       const rows = document.querySelectorAll("#competencyTable tbody tr");
-
       rows.forEach(row => {
-        const competency = row.children[1].textContent;
-        const level = row.children[2].textContent;
-
+        const competency = row.children[2].textContent;
+        const level = row.children[3].textContent;
         const competencyMatch = !competencyFilter || competency === competencyFilter;
         const levelMatch = !levelFilter || level === levelFilter;
-
         row.style.display = competencyMatch && levelMatch ? "" : "none";
       });
+    }
+
+    document.getElementById("statusForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("status_name").value;
+      const status = document.getElementById("employment_status").value;
+      const table = document.getElementById("statusTable").getElementsByTagName("tbody")[0];
+      const newRow = table.insertRow();
+      const nameCell = newRow.insertCell(0);
+      const statusCell = newRow.insertCell(1);
+      const actionCell = newRow.insertCell(2);
+      nameCell.textContent = name;
+      statusCell.textContent = status;
+      actionCell.innerHTML = `
+        <button class="edit-btn" onclick="editStatus(this)">Edit</button>
+        <button class="delete-btn" onclick="deleteStatus(this)">Delete</button>
+      `;
+      this.reset();
+    });
+
+    function deleteStatus(button) {
+      const row = button.parentElement.parentElement;
+      row.remove();
+    }
+
+    function editStatus(button) {
+      const row = button.parentElement.parentElement;
+      const nameCell = row.cells[0];
+      const statusCell = row.cells[1];
+      const newName = prompt("Edit employee name:", nameCell.textContent);
+      const newStatus = prompt("Edit status (New, Retired, Fired):", statusCell.textContent);
+      if (newName && newStatus) {
+        nameCell.textContent = newName;
+        statusCell.textContent = newStatus;
+      }
     }
   </script>
 </body>

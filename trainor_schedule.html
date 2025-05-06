@@ -199,6 +199,15 @@ h1 {
   text-decoration: none;
   cursor: pointer;
 }
+    .available {
+  background-color: #b2f2bb; /* light green */
+  font-weight: bold;
+}
+
+.rest-day {
+  background-color: #d0f0ff; /* light blue */
+  font-style: italic;
+}
 </style>
 </head>
 <body>
@@ -289,27 +298,44 @@ function createCalendar(monthIndex) {
   const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
   const highlights = getRandomHighlights(monthIndex);
 
+  const availableDays = new Set();
+  while (availableDays.size < 4) {
+    const randDay = Math.floor(Math.random() * daysInMonth) + 1;
+    if (!highlights[randDay]) {
+      availableDays.add(randDay);
+    }
+  }
+
   for (let i = 0; i < firstDay; i++) {
     dates.appendChild(document.createElement('div'));
   }
 
   for (let day = 1; day <= daysInMonth; day++) {
     const dateDiv = document.createElement('div');
-    const today = new Date();
+    const today = new Date(year, monthIndex, day);
+    const key = `${year}-${monthIndex + 1}-${day}`;
 
+    
     if (
-      day === today.getDate() &&
-      monthIndex === today.getMonth() &&
-      year === today.getFullYear()
+      day === new Date().getDate() &&
+      monthIndex === new Date().getMonth() &&
+      year === new Date().getFullYear()
     ) {
       dateDiv.classList.add('today');
     }
 
+    
     if (highlights[day]) {
       dateDiv.classList.add(highlights[day]);
+    } else if (availableDays.has(day)) {
+      dateDiv.classList.add('available'); // Green available
     }
 
-    const key = `${year}-${monthIndex + 1}-${day}`;
+    
+    if (today.getDay() === 0) {
+      dateDiv.classList.add('rest-day');
+    }
+
     dateDiv.dataset.dateKey = key;
     dateDiv.onclick = () => {
       selectedKey = key;

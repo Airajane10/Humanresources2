@@ -1,94 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login - WorkBreak</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .captcha-container {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .captcha-container label {
-            display: block;
-            margin-bottom: 5px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HUMAN RESOURCES 2 - Employee Side</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: navy;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #fff;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+    .login-container {
+      background: white; 
+      backdrop-filter: blur(10px); 
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+      width: 350px;
+    }
+    .input-group {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    .label-box {
+      background: black;
+      color: white;
+      padding: 10px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      font-size: 14px;
+      width: 30%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .input-group input {
+      width: 70%;
+      padding: 10px;
+      border: 1px solid black; 
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      background: #f0f0f0;
+      color: #333;
+      outline: none;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1 style="text-align:center; font-family: Georgia;">WELCOME TO HUMAN RESOURCES 2</h1>
-        <form id="loginForm" method="POST" style="text-align:center;">
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required autocomplete="email"><br><br>
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" required autocomplete="current-password"><br><br>
 
-            <div class="captcha-container">
-                <label for="captcha">Are you a human?</label>
-                <input type="checkbox" id="captcha" name="captcha"><br>
-                <small>Checking this helps us prevent automated spam.</small>
-            </div>
-            <br>
-            <button type="submit">Login</button>
-        </form>
-    </div>
+  <h1>HUMAN RESOURCES 3</h1>
+  <h2>Employee Side</h2>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('registered') === 'true') {
-                const registeredEmail = localStorage.getItem('registeredEmail'); // Use localStorage
-                const registeredPassword = localStorage.getItem('registeredPassword'); // Use localStorage
+  <div class="login-container">
+    <form id="employeeLoginForm" autocomplete="off">
+      
+      <div class="input-group">
+        <div class="label-box">Email</div>
+        <input type="email" id="employeeEmail" placeholder="Enter Email" required>
+      </div>
 
-                console.log("Retrieved from localStorage - Email:", registeredEmail);
-                console.log("Retrieved from localStorage - Password:", registeredPassword);
+      <div class="input-group">
+        <div class="label-box">Password</div>
+        <input type="password" id="employeePassword" placeholder="Enter Password" required>
+      </div>
 
-                if (registeredEmail && registeredPassword) {
-                    document.querySelector('input[name="email"]').value = registeredEmail;
-                    document.querySelector('input[name="password"]').value = registeredPassword;
-                }
+      <button type="submit">Log In</button>
+    </form>
+  </div>
 
-            }
+  <script>
+    document.getElementById('employeeLoginForm').addEventListener('submit', function(e) {
+      e.preventDefault(); 
+      const email = document.getElementById('employeeEmail').value;
+      const password = document.getElementById('employeePassword').value;
+      
+      if (email && password) {
+        window.location.href = 'verification.html'; 
+      } else {
+        alert('Please enter email and password!');
+      }
+    });
+  </script>
 
-            const loginForm = document.querySelector('#loginForm');
-
-            loginForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const email = document.querySelector('input[name="email"]').value;
-                const password = document.querySelector('input[name="password"]').value;
-                const isHuman = document.querySelector('#captcha').checked;
-
-                console.log("Entered Email:", email);
-                console.log("Entered Password:", password);
-                console.log("Human Check:", isHuman);
-
-                // ADD THESE LINES:
-                console.log("Checking localStorage before getItem:");
-                console.log("localStorage.getItem('registeredEmail'):", localStorage.getItem('registeredEmail'));
-                console.log("localStorage.getItem('registeredPassword'):", localStorage.getItem('registeredPassword'));
-
-                const storedEmail = localStorage.getItem('registeredEmail'); // Use localStorage
-                const storedPassword = localStorage.getItem('registeredPassword'); // Use localStorage
-
-                console.log("Stored Email (before compare):", storedEmail);
-                console.log("Stored Password (before compare):", storedPassword);
-
-                if (isHuman) {
-                    if (email === storedEmail && password === storedPassword && storedEmail !== null) {
-                        console.log("Login successful based on registered data (simulated). Redirecting to verification.html");
-                        window.location.href = 'verification.html';
-                    } else if (email === 'test@example.com' && password === 'password123') {
-                        console.log("Login successful based on hardcoded data. Redirecting to verification.html");
-                        window.location.href = 'verification.html';
-                    } else {
-                        alert('Invalid email or password (simulated).');
-                    }
-                } else {
-                    alert('Please confirm you are not a robot.');
-                }
-            });
-        });
-    </script>
 </body>
 </html>

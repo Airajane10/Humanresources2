@@ -203,13 +203,29 @@ h1 {
 </head>
 <body>
 <h1>📅 TRAINOR SCHEDULE</h1>
+  <a href="trainer_selection.html" 
+   style="position: absolute; 
+          top: 20px; 
+          right: 20px; 
+          background-color: red; 
+          color: white; 
+          padding: 10px 16px; 
+          text-decoration: none; 
+          font-weight: bold; 
+          border-radius: 5px; 
+          border: none; 
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+          transition: background-color 0.3s ease;"
+   onmouseover="this.style.backgroundColor='darkred'" 
+   onmouseout="this.style.backgroundColor='red'">
+   Back
+</a>
 <div class="legend">
 <span class="fully-booked">Fully Booked</span>
 <span class="partially-booked">Partially Booked</span>
 </div>
 <div class="year-container" id="calendarContainer"></div>
 
-<!-- Modal -->
 <div id="noteModal" class="modal">
 <div class="modal-content">
   <span class="close" onclick="document.getElementById('noteModal').style.display='none'">&times;</span>
